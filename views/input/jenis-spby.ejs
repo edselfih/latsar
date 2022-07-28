@@ -1,0 +1,328 @@
+<% layout('layout/template.ejs') %>
+<div class="container">
+    <h1 class="text-center mb-4" style="color:white"> Input Jenis SPBy</h1>
+
+    <form action="/input/jenis-spby" method="POST">
+      <!-- Judul besar SPBy -->
+    <div class="d-flex justify-content-center">
+      <div class="card" style="width: 48rem; background-color: transparent; padding-left: 0em; padding-right: 0em; border-color: transparent;">
+        <div class="row d-flex justify-content-center">
+          <div class="col-7">
+            <div class="row g-3 align-items-center ">
+              <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label" style="color: white">Jenis SPBy</label>
+              </div>
+              <div class="col">
+                <input type="text" name="jenisSPBy" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+              </div>      
+            </div> 
+          </div>        
+         
+            <div class="col-2 align-self-center d-flex justify-content-center">
+              <div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="jenis" value="Tunai" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault" style="color: white">
+                    Tunai
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 align-self-center">
+              <div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="jenis" value="KKP" id="flexCheckDefault1">
+                  <label class="form-check-label" for="flexCheckDefault1" style="color: white">
+                    KKP
+                  </label>
+                </div>
+              </div>
+            </div>
+          
+
+          
+        </div>
+      </div>
+    </div>
+    
+      
+    <!-- ini table:    -->
+    <div class="row justify-content-center mt-4">
+      <div class="card" style="width: 48rem; background-color: white; padding-left: 0em; padding-right: 0em;">
+        <div class="card-body">
+          <form action="" class="align-middle">
+            <table class="table table-bordered mb-0">
+              <tbody>
+                <tr>
+                  <div class="row">
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="ttdPPK" type="checkbox" value="TTD PPK pada Bukti" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            TTD PPK pada Bukti
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="permohonanPembayaran" type="checkbox" value="Permohonan Pembayaran" id="flexCheckChecked">
+                          <label class="form-check-label" for="flexCheckChecked">
+                            Permohonan Pembayaran
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="buktiPembayaranKKP" type="checkbox" value="Bukti Pembayaran KKP" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Bukti Pembayaran KKP
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="row">
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="pengeluaranRiil" type="checkbox" value="Pengeluaran Riil" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Pengeluaran Riil
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="notaDinas" type="checkbox" value="Nota Dinas" id="flexCheckChecked">
+                          <label class="form-check-label" for="flexCheckChecked">
+                            Nota Dinas
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="absensi" type="checkbox" value="Absensi" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Absensi
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                  </div>
+                </tr>
+                <tr> 
+                  <div class="row">
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="persetujuanPBJ" type="checkbox" value="Persetujuan PBJ" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Persetujuan PBJ
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="suratTugas" type="checkbox" value="Surat Tugas" id="flexCheckChecked">
+                          <label class="form-check-label" for="flexCheckChecked">
+                            Surat Tugas
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="spj" type="checkbox" value="SPJ" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            SPJ
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="row">
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="spd" type="checkbox" value="SPD" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            SPD
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="kesesuaianSBM" type="checkbox" value="Kesesuaian SBM" id="flexCheckChecked">
+                          <label class="form-check-label" for="flexCheckChecked">
+                            Kesesuaian SBM
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" name="rincianTransport" type="checkbox" value="Rincian Transport" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Rincian Transport
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                  </div>
+                </tr>
+                <tr>
+                  <td class="align-middle">
+                    <div >
+                      <div class="form-check">
+                        <input class="form-check-input" name="memoPerintahBayar" type="checkbox" value="Memo Perintah Bayar" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Memo Perintah Bayar
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <div class="form-check" style="padding-left: 0.7em ;">
+                    <p class="mb-0">
+                      <a class="btn btn-light" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Pajak</a>
+                    </p>
+                    <div class="row">
+                      <div class="col">
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                          <div class="form-check">
+                              <input class="form-check-input" name="duaSatu" type="checkbox" value="PPh 21" id="flexCheckDefault" checked disabled>
+                              <label class="form-check-label" for="flexCheckDefault" aria-checked="true">
+                                21
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" name="duaDua" type="checkbox" value="PPh 22" id="flexCheckChecked">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                22
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" name="duaTiga" type="checkbox" value="PPh 23" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                23
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" name="final" type="checkbox" value="Pasal 4 ayat 2" id="flexCheckChecked">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                4 ayat 2
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" name="ppn" type="checkbox" value="PPN" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                PPN
+                              </label>
+                            </div>
+                        </div>
+                      </div>            
+                    </label>
+                    </div>
+                  </td>
+                  <td class="align-middle">
+                    <div class="form-check" style="padding-left: 0.7em ;">
+                      <p class="mb-0">
+                        <a class="btn btn-light" data-bs-toggle="collapse" href="#CollapseExample1" role="button" aria-expanded="false" aria-controls="#CollapseExample1">Lain-lain</a>
+                      </p>
+                      <div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="collapse multi-collapse" id="CollapseExample1">
+                              <div class="input-group mb-3">
+                                <input type="text" name="lainLain" class="form-control" placeholder="Kelengkapan SPBy" aria-label="Kelengkapan SPBy" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
+                              </div>                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>    
+                    </div>                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+                  <!-- <input class="form-control" type="text" placeholder="Default input" aria-label="default input example">
+              <button type="button" class="btn btn-primary">Submit</button> -->
+          </form>
+        </div>
+        <div class="pb-3 d-flex justify-content-end" style="padding-right: 1em">
+          <button class="btn btn-success">Submit</button>
+        </div>        
+      </div>
+    </div>
+    </form>
+
+    
+
+    <!-- Tombol Submit cadangan xixixi -->
+    <!-- <div class="d-flex justify-content-center">
+      <div class="card mt-4" style="width: 48rem; background-color: transparent; padding-left: 0em; padding-right: 0em; border-color: transparent;">
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-light">submit</button> 
+        </div>
+      </div>           
+    </div>     -->
+
+    <!-- Tabel Data Jenis SPBy -->
+    <div class="card" style="padding-right: 1em; margin: 3em">
+      <table class="table table-bordered m-2">
+        <thead>
+          <tr>
+            <div class="justify-content-center">
+              <div class="d-flex pl-1">
+                <th scope="col" class="">No</th>
+                <th scope="col" class="flex-grow">Jenis SPBy</th>
+                <th scope="col" class="">Tunai/KKP</th>
+                <th scope="col" class="">Kelengkapan</th>
+              </div>
+            </div>
+          </tr>
+        </thead> 
+        <tbody>
+          <% let nomor = 0 %> 
+          <% for (let jenisSpby of jenisSpbys) { %>
+          <% nomor = nomor + 1 %>
+          <tr>
+            <th scope="row"><%= nomor %></th>
+            <td><%= jenisSpby.jenisSPBy %></td>
+            <td><%= jenisSpby.jenis %></td>
+            <td><%= jenisSpby.ttdPPK %>, <%= jenisSpby.pengeluaranRiil %>, <%= jenisSpby.persetujuanPBJ %>, <%= jenisSpby.spd %>, <%= jenisSpby.memoPerintahBayar %>, <%= jenisSpby.permohonanPembayaran %>, <%= jenisSpby.notaDinas %>, <%= jenisSpby.suratTugas %>, <%= jenisSpby.kesesuaianSBM %>, <%= jenisSpby.buktiPembayaranKKP %>, <%= jenisSpby.absensi %>, <%= jenisSpby.spj %>, <%= jenisSpby.rincianTransport %>, <%= jenisSpby.pajak %>, <%= jenisSpby.lainLain %></td>            
+          </tr>
+          <% } %>
+        </tbody>              
+      </table>
+    </div>
+
+    <!-- Tombol Kembali -->
+    <div class="d-flex justify-content-end">
+      <div class="card" style="width: 6rem; margin-right: 3em; margin-top: 0.1em">
+        <a class="btn btn-light" href="/input" role="button">Kembali</a>
+      </div>
+    </div>
+    
+
+</div>

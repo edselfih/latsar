@@ -1,0 +1,143 @@
+<% layout('layout/template.ejs') %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="row justify-content-center pb-6">
+        <div class="card" style="width: auto">
+          <div class="card-body">
+            <h4 class="card-title text-center">SPBy Tunai</h4>
+          </div>
+          <hr class="mb-3 mt-0" />
+          <form action="">
+            <div class="mb-3">
+              <label for="jenis-spby" class="form-label">Jenis SPBy</label>
+              <select class="form-select" id="jenis-spby" name="jenisSpby">
+                <option selected disabled>Pilih Jenis SPBy</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="d-flex">
+              <div class="mb-3" style="margin-right: 1em;">
+                <label for="nomor-spby" class="form-label">Nomor SPBy</label>
+                <input type="number" class="form-control" id="nomor-spby" placeholder="0" name="gupTunai[nomorSpby]"/>
+              </div>
+              <div class="mb-3" style="margin-right: 1em;">
+                <label for="nomor-nd" class="form-label">Nomor ND</label>
+                <input type="number" class="form-control" id="nomor-nd" placeholder="0" name="gupTunai[nomorNd]"/>
+              </div>
+              <div class="mb-3" style="margin-right: 1em;">
+                <label for="nomor-st" class="form-label">Nomor ST</label>
+                <input type="number" class="form-control" id="nomor-st" placeholder="0" name="gupTunai[nomorSt]"/>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="uraian" class="form-label">Uraian</label>
+              <input type="text" class="form-control" id="uraian" name="gupTunai[uraian]"/>
+            </div>
+            <label for="jumlah" class="form-label">Jumlah</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Rp</span>
+              <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlah]">
+            </div>
+            <div class="mb-3">
+              <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
+              <select class="form-select" id="daftar-ppk" name="gupTunai[daftarPpk]">
+                <option selected disabled>Pilih PPK</option>
+                <% for (daftarPpk of daftarPpks) { %>
+                  <option value="<%= daftarPpk.namaPpk %>"><%= daftarPpk.namaPpk %></option>
+                <% } %>  
+              </select>
+            </div>
+            <div class="d-flex justify-content-end mb-3">
+              <button type="button" class="btn btn-success">Next</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card" style="width: auto; height: auto;">
+        <div class="card-body">
+          <h4 class="card-title text-center">Pilih Jenis SPBy</h4>
+          <hr class="mb-3 mt-4" />
+          <label for="jumlah" class="form-label">Input Kwitansi</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Rp</span>
+            <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlah]">
+          </div>
+          <label for="jumlah" class="form-label">Jumlah Kwitansi</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Rp</span>
+            <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlah]" disabled>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Tanda Tangan PPK
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Tanda Tangan Bendahara
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Memo SPBy
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Detil COA
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Tanda Tangan PPK di Kwitansi/Bon
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Sesuai SBM
+            </label>
+          </div>
+          <div class="accordion mt-3" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  PPh 22
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">NPWP</label>
+                    <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="00.123.875.7-074.000">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nama Rekanan</label>
+                    <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="PT. Ines">
+                  </div>
+                  <label for="jumlah" class="form-label">Jumlah Pajak</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Rp</span>
+                    <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlah]">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>

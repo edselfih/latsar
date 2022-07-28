@@ -1,0 +1,58 @@
+<% layout('layout/template.ejs') %>
+<div class="container">
+  <h1 class="text-center mb-4" style="color: white">Daftar PPK</h1>
+
+  <div class="row justify-content-center">
+    <div class="card" style="width: 36rem">
+      <h4 class="card-title text-center mt-3">Input PPK</h4>
+      <hr class="mb-0 mt-0" />
+      <div class="card-body">
+        <form action="/input/daftar-ppk" method="POST">
+          <div class="mb-3">
+            <label for="nama-ppk" class="form-label">Nama PPK</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nama-ppk"
+              name="namaPpk"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="nip" class="form-label">NIP</label>
+            <input type="number" class="form-control" id="nip" name="nip" />
+          </div>
+          <button class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="padding-right: 1em; margin: 3em">
+    <table class="table table-bordered border-dark m-2">
+      <thead>
+        <tr>
+          <div class="justify-content-center">
+            <div class="d-flex pl-1">
+              <th scope="col" class="">No</th>
+              <th scope="col" class="flex-grow">Nama PPK</th>
+              <th scope="col" class="">NIP</th>
+            </div>
+          </div>
+        </tr>
+      </thead>
+      <tbody>
+        <% let nomor = 0 %> 
+        <% for (let daftarPpk of daftarPpks) { %>
+        <% nomor = nomor + 1 %>
+        <tr>
+          <th scope="row"><%= nomor %></th>
+          <td><%= daftarPpk.namaPpk %></td>
+          <td><%= daftarPpk.nip %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-end mb-3">
+    <a class="btn btn-light" href="/input" role="button">Kembali</a>
+  </div>
+</div>
