@@ -1,19 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const pajakSchema = new Schema ({
-    duaSatu: Boolean,
-    duaDua: Boolean,
-    duaTiga: Boolean,
-    final: Boolean,
-    ppn: Boolean,
-
-})
-
-const lainLainSchema = new Schema ({
-    lainLain: String
-})
-
 const daftarSPBySchema = new Schema ({
     jenisSPBy: String,
     jenis: String,
@@ -30,8 +17,19 @@ const daftarSPBySchema = new Schema ({
     absensi: String,
     spj: String,
     rincianTransport: String,
-    pajak: [pajakSchema],
-    // lainLain: [lainLainSchema]
+    pajak: {
+        duaSatu: String,
+        duaDua: String,
+        duaTiga: String,
+        final: String,
+        ppn: String,
+    },
+    lainlain: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Lainlain'
+        }
+    ]
 })
 
 module.exports = mongoose.model('Daftar-SPBy', daftarSPBySchema)

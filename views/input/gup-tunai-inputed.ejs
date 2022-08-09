@@ -8,47 +8,41 @@
             <h4 class="card-title text-center">SPBy Tunai</h4>
           </div>
           <hr class="mb-3 mt-0" />
-
+ 
             <form action="/input/gup-tunai" method="POST">
               <div class="mb-3">
                 <label for="jenis-spby" class="form-label">Jenis SPBy</label>
                 <select class="form-select" id="jenis-spby" name="gupTunai[jenisSpby]">
-                  <option selected disabled>Pilih Jenis SPBy</option>
-                  <% for (jenisSpby of jenisSpbys) { %>
-                    <option value="<%= jenisSpby.jenisSPBy %>"><%= jenisSpby.jenisSPBy %></option>
-                  <% } %>
+                  <option selected disabled><%= inputedGup.jenisSpby %></option>
                 </select>
               </div>
               <div class="d-flex">
                 <div class="mb-3" style="margin-right: 1em;">
                   <label for="nomor-spby" class="form-label">Nomor SPBy</label>
-                  <input type="number" class="form-control" id="nomor-spby" placeholder="0" name="gupTunai[nomorSpby]"/>
+                  <input type="number" class="form-control" id="nomor-spby" placeholder="<%=inputedGup.nomorSpby%>" name="gupTunai[nomorSpby]"/>
                 </div>
                 <div class="mb-3" style="margin-right: 1em;">
                   <label for="nomor-nd" class="form-label">Nomor ND</label>
-                  <input type="number" class="form-control" id="nomor-nd" placeholder="0" name="gupTunai[nomorNd]"/>
+                  <input type="number" class="form-control" id="nomor-nd" placeholder="<%=inputedGup.nomorNd%>" name="gupTunai[nomorNd]"/>
                 </div>
                 <div class="mb-3" style="margin-right: 1em;">
                   <label for="nomor-st" class="form-label">Nomor ST</label>
-                  <input type="number" class="form-control" id="nomor-st" placeholder="0" name="gupTunai[nomorSt]"/>
+                  <input type="number" class="form-control" id="nomor-st" placeholder="<%=inputedGup.nomorSt%>" name="gupTunai[nomorSt]"/>
                 </div>
               </div>
               <div class="mb-3">
                 <label for="uraian" class="form-label">Uraian</label>
-                <input type="text" class="form-control" id="uraian" name="gupTunai[uraian]"/>
+                <input type="text" class="form-control" id="uraian" placeholder="<%=inputedGup.uraian%>" name="gupTunai[uraian]"/>
               </div>
               <label for="jumlah" class="form-label">Jumlah</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Rp</span>
-                <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]">
+                <input type="text" class="form-control" id="jumlah" placeholder="<%=inputedGup.jumlahSpby%>" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]">
               </div>
               <div class="mb-3">
                 <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
-                <select class="form-select" id="daftar-ppk" name="gupTunai[ppk]">
-                  <option selected disabled>Pilih PPK</option>
-                  <% for (daftarPpk of daftarPpks) { %>
-                    <option value="<%= daftarPpk.namaPpk %>"><%= daftarPpk.namaPpk %></option>
-                  <% } %>  
+                <select class="form-select" id="daftar-ppk" name="gupTunai[daftarPpk]">
+                  <option selected disabled value="<%= inputedGup.ppk %>"><%=inputedGup.ppk%></option>
                 </select>
               </div>
               <div class="d-flex justify-content-end mb-3">
@@ -60,7 +54,7 @@
       </div>
     </div>
 
-    <!-- <div class="col-6">
+    <div class="col-6">
       <div class="card" style="width: auto; height: auto;">
         <div class="card-body">
           <h4 class="card-title text-center">Pilih Jenis SPBy</h4>
@@ -71,47 +65,50 @@
             <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlah]">
             <button class="btn btn-outline-secondary" id="button-addon2">+</button>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Tanda Tangan PPK
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Tanda Tangan Bendahara
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Memo SPBy
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Detil COA
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Tanda Tangan PPK di Kwitansi/Bon
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Sesuai SBM
-            </label>
-          </div>
+          <% for (let jenisSpby of jenisSpbys) { %>
+              <% if (jenisSpby.ttdPPK) { %> 
+                <div class="mt-3">
+                  <input class="form-check-input" name="ttdPPK" type="checkbox" value="<%= jenisSpby.ttdPPK %>" id="<%= jenisSpby.ttdPPK %>">
+                  <label class="form-check-label" for="<%= jenisSpby.ttdPPK %>" >
+                    <%= jenisSpby.ttdPPK %>
+                  </label>
+                </div>
+              <% } %>
+              <% if (jenisSpby.pengeluaranRiil) { %> 
+                <div class="mt-3">
+                  <input class="form-check-input" name="pengeluaranRiil" type="checkbox" value="<%=jenisSpby.pengeluaranRiil%>" id="<%=jenisSpby.pengeluaranRiil%>">
+                  <label class="form-check-label" for="<%=jenisSpby.pengeluaranRiil%>" >
+                    <%=jenisSpby.pengeluaranRiil%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (jenisSpby.persetujuanPBJ) { %> <%= jenisSpby.persetujuanPBJ %>, 
+                <% } %>
+              <% if (jenisSpby.spd) { %> <%= jenisSpby.spd %>, <% } %>
+              <% if (jenisSpby.memoPerintahBayar) { %> <%= jenisSpby.memoPerintahBayar %>, <% } %>
+              <% if (jenisSpby.permohonanPembayaran) { %> <%= jenisSpby.permohonanPembayaran %>, <% } %>
+              <% if (jenisSpby.notaDinas) { %> <%= jenisSpby.notaDinas %>, <% } %>
+              <% if (jenisSpby.suratTugas) { %> <%= jenisSpby.suratTugas %>, <% } %>
+              <% if (jenisSpby.kesesuaianSBM) { %> <%= jenisSpby.kesesuaianSBM %>, <% } %>
+              <% if (jenisSpby.buktiPembayaranKKP) { %> <%= jenisSpby.buktiPembayaranKKP %>, <% } %>
+              <% if (jenisSpby.absensi) { %> <%= jenisSpby.absensi %>, <% } %>
+              <% if (jenisSpby.spj) { %> <%= jenisSpby.spj %>, <% } %>
+              <% if (jenisSpby.rincianTransport) { %> <%= jenisSpby.rincianTransport %>, <% } %>
+
+              <% if (jenisSpby.lainlain ) { %> <% for ( lain of jenisSpby.lainlain) { %> 
+                <%= lain.desc %>,
+              <% }}%>
+          <% } %> 
+
           <div class="accordion mt-3" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  PPh 22
+                  <% if (jenisSpby.pajak.duaSatu ) { %> <%= jenisSpby.pajak.duaSatu  %><% } %>
+                  <% if (jenisSpby.pajak.duaDua ) { %> <%= jenisSpby.pajak.duaDua  %><% } %>
+                  <% if (jenisSpby.pajak.duaTiga ) { %> <%= jenisSpby.pajak.duaTiga  %><% } %>
+                  <% if (jenisSpby.pajak.final ) { %> <%= jenisSpby.pajak.final %><% } %>
+                  <% if (jenisSpby.pajak.ppn ) { %> <%= jenisSpby.pajak.ppn  %><% } %>
                 </button>
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -135,8 +132,7 @@
           </div>
         </div>
       </div>
-    </div> -->
-
+    </div>
   </div>
 
   

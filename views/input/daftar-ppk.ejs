@@ -35,6 +35,7 @@
               <th scope="col" class="">No</th>
               <th scope="col" class="flex-grow">Nama PPK</th>
               <th scope="col" class="">NIP</th>
+              <th scope="col" class="">Action</th>
             </div>
           </div>
         </tr>
@@ -47,6 +48,11 @@
           <th scope="row"><%= nomor %></th>
           <td><%= daftarPpk.namaPpk %></td>
           <td><%= daftarPpk.nip %></td>
+          <td>
+            <form action="/input/daftar-ppk/<%= daftarPpk._id %>?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
         </tr>
         <% } %>
       </tbody>
