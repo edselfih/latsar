@@ -26,6 +26,7 @@ router.route('/')
 
     router.route('/gup-tunai/:id')
     .get( inputController.gupInputed)
+    .patch( inputController.checkedGupInputed)
     
 
 module.exports = router;

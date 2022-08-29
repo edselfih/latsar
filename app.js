@@ -64,9 +64,11 @@ app.use((req, res, next) => {
 //Routes:
 const homeRoutes = require('./routes/home');
 const inputRoutes = require('./routes/input');
+const monitoringRoutes = require('./routes/monitoring');
 
 app.use('/', homeRoutes);
 app.use('/input', inputRoutes);
+app.use('/monitoring', monitoringRoutes)
 
 app.listen(3000, () => {
     console.log('server aktif')
