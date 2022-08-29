@@ -22,7 +22,7 @@ module.exports.createDaftarPpk = async (req, res) => {
 
 module.exports.deleteDaftarPpk = async (req, res) => {
   const {ppkId} = req.params
-  await DaftarPpk.findByIdAndUpdate(ppkId);
+  await DaftarPpk.findByIdAndRemove(ppkId);
   res.redirect(`/input/daftar-ppk`);
 };
 
