@@ -12,6 +12,8 @@ const inputGupSchema = new Schema ({
     jumlahSpby: Number,
     ppk: String,
     checked: {
+        type: Schema.Types.ObjectId,
+        ref: 'DaftarSPByInput'
         
     }
 })
