@@ -59,77 +59,167 @@
         <div class="card-body">
           <h4 class="card-title text-center">Pilih Jenis SPBy</h4>
           <hr class="mb-3 mt-4" />
-          <label for="jumlah" class="form-label">Input Kwitansi</label>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Rp</span>
-            <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlah]">
-            <button class="btn btn-outline-secondary" id="button-addon2">+</button>
-          </div>
-          <% for (let jenisSpby of jenisSpbys) { %>
-              <% if (jenisSpby.ttdPPK) { %> 
-                <div class="mt-3">
-                  <input class="form-check-input" name="ttdPPK" type="checkbox" value="<%= jenisSpby.ttdPPK %>" id="<%= jenisSpby.ttdPPK %>">
-                  <label class="form-check-label" for="<%= jenisSpby.ttdPPK %>" >
-                    <%= jenisSpby.ttdPPK %>
-                  </label>
-                </div>
-              <% } %>
-              <% if (jenisSpby.pengeluaranRiil) { %> 
-                <div class="mt-3">
-                  <input class="form-check-input" name="pengeluaranRiil" type="checkbox" value="<%=jenisSpby.pengeluaranRiil%>" id="<%=jenisSpby.pengeluaranRiil%>">
-                  <label class="form-check-label" for="<%=jenisSpby.pengeluaranRiil%>" >
-                    <%=jenisSpby.pengeluaranRiil%>
-                  </label>
-                </div>
-              <% } %>
-              <% if (jenisSpby.persetujuanPBJ) { %> <%= jenisSpby.persetujuanPBJ %>, 
-                <% } %>
-              <% if (jenisSpby.spd) { %> <%= jenisSpby.spd %>, <% } %>
-              <% if (jenisSpby.memoPerintahBayar) { %> <%= jenisSpby.memoPerintahBayar %>, <% } %>
-              <% if (jenisSpby.permohonanPembayaran) { %> <%= jenisSpby.permohonanPembayaran %>, <% } %>
-              <% if (jenisSpby.notaDinas) { %> <%= jenisSpby.notaDinas %>, <% } %>
-              <% if (jenisSpby.suratTugas) { %> <%= jenisSpby.suratTugas %>, <% } %>
-              <% if (jenisSpby.kesesuaianSBM) { %> <%= jenisSpby.kesesuaianSBM %>, <% } %>
-              <% if (jenisSpby.buktiPembayaranKKP) { %> <%= jenisSpby.buktiPembayaranKKP %>, <% } %>
-              <% if (jenisSpby.absensi) { %> <%= jenisSpby.absensi %>, <% } %>
-              <% if (jenisSpby.spj) { %> <%= jenisSpby.spj %>, <% } %>
-              <% if (jenisSpby.rincianTransport) { %> <%= jenisSpby.rincianTransport %>, <% } %>
+          <form action="/input/gup-tunai/<%= daftarSpbys._id %>?_method=PATCH" method="POST">
+            <label for="jumlah" class="form-label">Input Kwitansi</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Rp</span>
+              <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[jumlah]">
+            </div>
 
-              <% if (jenisSpby.lainlain ) { %> <% for ( lain of jenisSpby.lainlain) { %> 
-                <%= lain.desc %>,
+            <!-- cek list -->
+            <div>
+              <% if (daftarSpbys.ttdPPK) {  %> 
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[ttdPPK]" type="checkbox" value="<%= daftarSpbys.ttdPPK %>" id="<%= daftarSpbys.ttdPPK %>">
+                  <label class="form-check-label" for="<%= daftarSpbys.ttdPPK %>" >
+                    <%= daftarSpbys.ttdPPK %>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.pengeluaranRiil) { %> 
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[pengeluaranRiil]" type="checkbox" value="<%=daftarSpbys.pengeluaranRiil%>" id="<%=daftarSpbys.pengeluaranRiil%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.pengeluaranRiil%>" >
+                    <%=daftarSpbys.pengeluaranRiil%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.persetujuanPBJ) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[persetujuanPBJ]" type="checkbox" value="<%=daftarSpbys.persetujuanPBJ%>" id="<%=daftarSpbys.persetujuanPBJ%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.persetujuanPBJ%>" >
+                    <%=daftarSpbys.persetujuanPBJ%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.spd) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[spd]" type="checkbox" value="<%=daftarSpbys.spd%>" id="<%=daftarSpbys.spd%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.spd%>" >
+                    <%=daftarSpbys.spd%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.memoPerintahBayar) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[memoPerintahBayar]" type="checkbox" value="<%=daftarSpbys.memoPerintahBayar%>" id="<%=daftarSpbys.memoPerintahBayar%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.memoPerintahBayar%>" >
+                    <%=daftarSpbys.memoPerintahBayar%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.permohonanPembayaran) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[permohonanPembayaran]" type="checkbox" value="<%=daftarSpbys.permohonanPembayaran%>" id="<%=daftarSpbys.permohonanPembayaran%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.permohonanPembayaran%>" >
+                    <%=daftarSpbys.permohonanPembayaran%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.notaDinas) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[notaDinas]" type="checkbox" value="<%=daftarSpbys.notaDinas%>" id="<%=daftarSpbys.notaDinas%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.notaDinas%>" >
+                    <%=daftarSpbys.notaDinas%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.suratTugas) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[suratTugas]" type="checkbox" value="<%=daftarSpbys.suratTugas%>" id="<%=daftarSpbys.suratTugas%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.suratTugas%>" >
+                    <%=daftarSpbys.suratTugas%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.kesesuaianSBM) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[kesesuaianSBM]" type="checkbox" value="<%=daftarSpbys.kesesuaianSBM%>" id="<%=daftarSpbys.kesesuaianSBM%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.kesesuaianSBM%>" >
+                    <%=daftarSpbys.kesesuaianSBM%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.buktiPembayaranKKP) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[buktiPembayaranKKP]" type="checkbox" value="<%=daftarSpbys.buktiPembayaranKKP%>" id="<%=daftarSpbys.buktiPembayaranKKP%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.buktiPembayaranKKP%>" >
+                    <%=daftarSpbys.buktiPembayaranKKP%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.absensi) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[absensi]" type="checkbox" value="<%=daftarSpbys.absensi%>" id="<%=daftarSpbys.absensi%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.absensi%>" >
+                    <%=daftarSpbys.absensi%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.spj) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[spj]" type="checkbox" value="<%=daftarSpbys.spj%>" id="<%=daftarSpbys.spj%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.spj%>" >
+                    <%=daftarSpbys.spj%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.rincianTransport) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[rincianTransport]" type="checkbox" value="<%=daftarSpbys.rincianTransport%>" id="<%=daftarSpbys.rincianTransport%>">
+                  <label class="form-check-label" for="<%=daftarSpbys.rincianTransport%>" >
+                    <%=daftarSpbys.rincianTransport%>
+                  </label>
+                </div>
+              <% } %>
+  
+              <% if (daftarSpbys.lainlain ) { %> <% for ( lain of daftarSpbys.lainlain) { %> 
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[<%=lain.desc%>]" type="checkbox" value="<%=lain.desc%>" id="<%=lain.desc%>">
+                  <label class="form-check-label" for="<%=lain.desc%>" >
+                    <%=lain.desc%>
+                  </label>
+                </div>
               <% }}%>
-          <% } %> 
-
-          <div class="accordion mt-3" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <% if (jenisSpby.pajak.duaSatu ) { %> <%= jenisSpby.pajak.duaSatu  %><% } %>
-                  <% if (jenisSpby.pajak.duaDua ) { %> <%= jenisSpby.pajak.duaDua  %><% } %>
-                  <% if (jenisSpby.pajak.duaTiga ) { %> <%= jenisSpby.pajak.duaTiga  %><% } %>
-                  <% if (jenisSpby.pajak.final ) { %> <%= jenisSpby.pajak.final %><% } %>
-                  <% if (jenisSpby.pajak.ppn ) { %> <%= jenisSpby.pajak.ppn  %><% } %>
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">NPWP</label>
-                    <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="00.123.875.7-074.000">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nama Rekanan</label>
-                    <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="PT. Ines">
-                  </div>
-                  <label for="jumlah" class="form-label">Jumlah Pajak</label>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Rp</span>
-                    <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlah]">
+            </div>
+            
+            <!-- pajak: -->
+            <div class="accordion mt-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <% if (daftarSpbys.pajak && daftarSpbys.pajak.duaSatu) { %> <%= daftarSpbys.pajak.duaSatu  %><% } %>
+                    <% if (daftarSpbys.pajak && daftarSpbys.pajak.duaDua) { %> <%= daftarSpbys.pajak.duaDua  %><% } %>
+                    <% if (daftarSpbys.pajak && daftarSpbys.pajak.duaTiga) { %> <%= daftarSpbys.pajak.duaTiga  %><% } %>
+                    <% if (daftarSpbys.pajak && daftarSpbys.pajak.final) { %> <%= daftarSpbys.pajak.final %><% } %>
+                    <% if (daftarSpbys.pajak && daftarSpbys.pajak.ppn) { %> <%= daftarSpbys.pajak.ppn  %><% } %>
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">NPWP</label>
+                      <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="00.123.875.7-074.000">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Nama Rekanan</label>
+                      <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="PT. Ines">
+                    </div>
+                    <label for="jumlah" class="form-label">Jumlah Pajak</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Rp</span>
+                      <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[pajak]">
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <div class="d-flex justify-content-end mb-3 mt-3">
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+
+
         </div>
       </div>
     </div>

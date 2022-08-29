@@ -1,5 +1,5 @@
 const DaftarPpk = require('../models/input_daftar-ppk.js');
-const JenisSpby = require('../models/input_daftar-spby.js');
+const DaftarSpby = require('../models/input_daftar-spby.js');
 const Lainlain = require('../models/input_daftar-spby-lainlain.js');
 const InputGup = require('../models/input-gup.js');
 
@@ -29,14 +29,14 @@ module.exports.deleteDaftarPpk = async (req, res) => {
 // Jenis SPBy:
 
 module.exports.jenisSpby = async (req, res) => {
-  const jenisSpbys= await JenisSpby.find({}).populate('lainlain')
+  const jenisSpbys= await DaftarSpby.find({}).populate('lainlain')
   const lainlain = await Lainlain.find({})
   console.log(lainlain)
   res.render("./input/jenis-spby", {jenisSpbys, lainlain});
 };
 
 module.exports.createJenisSpby = async (req, res) => {
-  const newSpby = new JenisSpby(req.body);
+  const newSpby = new DaftarSpby(req.body);
   await newSpby.save();
   // res.send(req.body)
   res.redirect('/input/jenis-spby');
@@ -51,7 +51,7 @@ module.exports.createJenisSpbyLainlain = async (req, res) => {
 // GUP Tunai:
 
 module.exports.gup = async (req, res) => {
-  const jenisSpbys= await JenisSpby.find({}).populate('lainlain')
+  const jenisSpbys= await DaftarSpby.find({}).populate('lainlain')
   const daftarPpks= await DaftarPpk.find({});
   res.render("./input/gup-tunai", {daftarPpks, jenisSpbys});
 };
@@ -65,8 +65,13 @@ module.exports.createGup = async (req, res) => {
 module.exports.gupInputed = async (req, res) => {
   const {id} = req.params
   const inputedGup = await InputGup.findById(id)
-  const jenisSpbys= await JenisSpby.find({jenisSpby: inputedGup.jenisSpby})
+  const daftarSpbys= await DaftarSpby.findOne({jenisSPBy: `${inputedGup.jenisSpby}`})
   const daftarPpks= await DaftarPpk.find({});
-  res.render("./input/gup-tunai-inputed", {daftarPpks, jenisSpbys, inputedGup ,id});
+  res.render("./input/gup-tunai-inputed", {daftarPpks, daftarSpbys, inputedGup ,id});
 };
 
+module.exports.checkedGupInputed = async (req, res) => {
+  // const {id} = req.params
+  // const inputedGup = await InputGup.findByIdAndUpdate(id, {checked : req.body})
+  res.send(req.body.gup)
+};
