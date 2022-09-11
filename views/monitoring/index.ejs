@@ -1,2 +1,34 @@
 <% layout('layout/template.ejs') %>
-<h1>monitoring ines</h1>
+<h1 class="text-center mb-3" style="color: white" >Monitoring Spby</h1>
+<div class="card text-center">
+
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">No Spby</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% let nomor = 0 %> 
+                <%for (inputedGup of inputedGups) {%>
+                    <% nomor = nomor + 1 %>
+                    <% console.log(inputedGup._id) %> 
+                    <tr>
+                        <th scope="row"><%= nomor %></th>
+                        <td><%= inputedGup.nomorSpby %></td>
+                        <td>Lengkap</td>
+                        <td><a class="btn btn-warning" href='/monitoring/<%=inputedGup._id%>' role="button">Lihat</a></td>
+                    </tr>
+                <% } %> 
+        
+              </tbody>
+        </table>
+    </div>
+
+  </div>
+  
+

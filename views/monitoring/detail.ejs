@@ -1,0 +1,28 @@
+<% layout('layout/template.ejs') %>
+<h1 class="text-center mb-3" style="color: white" >Detail Spby</h1>
+<h4 class="text-center mb-3" style="color: white" >Jenis: <%= inputedGups.jenisSpby %>  </h4>
+<div class="card text-center">
+
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">No Spby</th>
+                  <th scope="col">Jumlah</th>
+                    <% for (let x in jenisSpby) { %> 
+                        <th scope="col"><%= jenisSpby[x] %> </th>
+                    <% } %>
+              </thead>
+              <tbody>
+                <tr>
+                    <th scope="row"><%= inputedGups.nomorSpby %></th>
+                    <th scope="row"><%= inputedGups.jumlahSpby %></th>
+                    <% for (let x in jenisSpby) { %> 
+                        <th scope="col"><%= checked[x] ? "v" : "-" %> </th>
+                    <%console.log(checked[x], inputedGups[x]) } %>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+
+  </div>

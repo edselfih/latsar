@@ -3,7 +3,6 @@ const DaftarSpby = require('../models/input_daftar-spby.js');
 const DaftarSpbyInputed = require('../models/input_daftar-spby-inputed.js');
 const Lainlain = require('../models/input_daftar-spby-lainlain.js');
 const InputGup = require('../models/input-gup.js');
-const inputGup = require('../models/input-gup.js');
 
 module.exports.index = (req, res) => {
   res.render("./input/index");
@@ -76,7 +75,6 @@ module.exports.checkedGupInputed = async (req, res) => {
   const {id} = req.params
   const daftarSpby = new DaftarSpbyInputed(req.body.gup)
   await daftarSpby.save()
-  const inputedGup = await InputGup.findByIdAndUpdate(id, {checked : daftarSpby._id})
-  console.log(inputedGup)
-  res.send(inputedGup)
+  await InputGup.findByIdAndUpdate(id, {checked : daftarSpby._id})
+  res.redirect('/monitoring')
 };
