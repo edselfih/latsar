@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const daftarSPByInputSchema = new Schema ({
+    jumlahSpby: Number,
     ttdPPK: String,
     pengeluaranRiil: String,
     persetujuanPBJ: String,

@@ -1,28 +1,51 @@
 <% layout('layout/template.ejs') %>
-<h1 class="text-center mb-3" style="color: white" >Detail Spby</h1>
-<h4 class="text-center mb-3" style="color: white" >Jenis: <%= inputedGups.jenisSpby %>  </h4>
-<div class="card text-center">
+<h1 class="text-center mb-3" style="color: white">Detail Spby</h1>
+<h4 class="text-center mb-3" style="color: white">
+  Jenis: <%= inputedGups.jenisSpby %>
+</h4>
+<div class="d-flex justify-content-center">
+    <div class="card text-left" style="width: 36rem;">
+        <div class="card-body">
+          <table class="table table-striped table-bordered">
+            <tbody>
+              <tr>
+                <th>No Spby</th>
+                <th><%= inputedGups.nomorSpby %></th>
+              </tr>
+              <tr>
+                <th>No Nota Dinas</th>
+                <th><%= inputedGups.nomorNd %></th>
+              </tr>
+              <tr>
+                <th>No Surat Tugas</th>
+                <th><%= inputedGups.nomorSt %></th>
+              </tr>
+              <tr>
+                <th>Nominal Spby</th>
+                <th
+                <% if ( inputedGups.jumlahSpby !== jumlahKwitansi) { %> 
+                    style="background-color: #dc3545"
+                <% } %> 
+                ><%= inputedGups.jumlahSpby %></th>
+              </tr>
+              <tr>
+                <th>Nominal Kuitansi</th>
+                <th
+                <% if ( inputedGups.jumlahSpby !== jumlahKwitansi) { %> 
+                    style="background-color: #dc3545"
+                <% } %> 
+                ><%= jumlahKwitansi %></th>
+              </tr>
+              <% for (let x in jenisSpby) { %>
+              <tr>
+                <th ><%= jenisSpby[x] %></th>
+                <th><%= checked[x] ? "v" : "-" %></th>
+              </tr>
+      
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
 
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                  <th scope="col">No Spby</th>
-                  <th scope="col">Jumlah</th>
-                    <% for (let x in jenisSpby) { %> 
-                        <th scope="col"><%= jenisSpby[x] %> </th>
-                    <% } %>
-              </thead>
-              <tbody>
-                <tr>
-                    <th scope="row"><%= inputedGups.nomorSpby %></th>
-                    <th scope="row"><%= inputedGups.jumlahSpby %></th>
-                    <% for (let x in jenisSpby) { %> 
-                        <th scope="col"><%= checked[x] ? "v" : "-" %> </th>
-                    <%console.log(checked[x], inputedGups[x]) } %>
-                </tr>
-              </tbody>
-        </table>
-    </div>
-
-  </div>
