@@ -11,6 +11,10 @@ const inputGupSchema = new Schema ({
     uraian: String,
     jumlahSpby: Number,
     ppk: String,
+    kelengkapan: {
+        type: String,
+        default: 'Lengkap'
+    },
     checked: {
         type: Schema.Types.ObjectId,
         ref: 'DaftarSPByInput'

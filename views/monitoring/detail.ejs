@@ -39,7 +39,7 @@
               <% for (let x in jenisSpby) { %>
               <tr>
                 <th ><%= jenisSpby[x] %></th>
-                <th><%= checked[x] ? "v" : "-" %></th>
+                <th><%= checked[x] === 'kosong' ? "-" : "v" %></th>
               </tr>
       
               <% } %>

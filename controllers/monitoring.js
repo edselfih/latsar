@@ -13,7 +13,6 @@ module.exports.detailSpby = async (req, res) => {
   const jenisSpbys = await DaftarSpby.findOne({
     jenisSPBy: inputedGups.jenisSpby,
   });
-  console.log(checked.jumlahSpby)
   const jumlahKwitansi = checked.jumlahSpby
   const jenisSpby = jenisSpbys.toObject()
   delete jenisSpby._id
@@ -22,5 +21,6 @@ module.exports.detailSpby = async (req, res) => {
   delete jenisSpby.pajak
   delete jenisSpby.lainlain
   delete jenisSpby.__v
+
   res.render(`./monitoring/detail`, { inputedGups, jenisSpby, checked, jumlahKwitansi });
 };

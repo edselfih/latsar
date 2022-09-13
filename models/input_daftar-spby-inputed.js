@@ -3,22 +3,70 @@ const Schema = mongoose.Schema
 
 const daftarSPByInputSchema = new Schema ({
     jumlahSpby: Number,
-    ttdPPK: String,
-    pengeluaranRiil: String,
-    persetujuanPBJ: String,
-    spd: String,
-    memoPerintahBayar: String,
-    permohonanPembayaran: String,
-    notaDinas: String,
-    suratTugas: String,
-    kesesuaianSBM: String,
-    buktiPembayaranKKP: String,
-    absensi: String,
-    spj: String,
-    rincianTransport: String,
-    pajakNpwp: String,
-    pajakRekanan: String,
-    pajakJumlah: String,
+    ttdPPK: {
+        type: String,
+        default: 'kosong'
+    },
+    pengeluaranRiil: {
+        type: String,
+        default: 'kosong'
+    },
+    persetujuanPBJ: {
+        type: String,
+        default: 'kosong'
+    },
+    spd: {
+        type: String,
+        default: 'kosong'
+    },
+    memoPerintahBayar: {
+        type: String,
+        default: 'kosong'
+    },
+    permohonanPembayaran: {
+        type: String,
+        default: 'kosong'
+    },
+    notaDinas: {
+        type: String,
+        default: 'kosong'
+    },
+    suratTugas: {
+        type: String,
+        default: 'kosong'
+    },
+    kesesuaianSBM: {
+        type: String,
+        default: 'kosong'
+    },
+    buktiPembayaranKKP: {
+        type: String,
+        default: 'kosong'
+    },
+    absensi: {
+        type: String,
+        default: 'kosong'
+    },
+    spj: {
+        type: String,
+        default: 'kosong'
+    },
+    rincianTransport: {
+        type: String,
+        default: 'kosong'
+    },
+    pajakNpwp: {
+        type: String,
+        default: 'kosong'
+    },
+    pajakRekanan: {
+        type: String,
+        default: 'kosong'
+    },
+    pajakJumlah: {
+        type: String,
+        default: 'kosong'
+    },
 })
 
 module.exports = mongoose.model('DaftarSPByInput', daftarSPByInputSchema)
