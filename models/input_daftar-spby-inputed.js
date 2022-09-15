@@ -67,6 +67,18 @@ const daftarSPByInputSchema = new Schema ({
         type: String,
         default: 'kosong'
     },
+    duaSatu: String,
+    duaDua: String,
+    duaTiga: String,
+    final: String,
+    ppn: String,
+    kjsDuaSatu: String,
+    kjsDuaDua: String,
+    kjsDuaTiga: String,
+    kjsFinal: String,
+    kjsPpn: String,
+    npwp: String,
+    rekanan: String
 })
 
 module.exports = mongoose.model('DaftarSPByInput', daftarSPByInputSchema)

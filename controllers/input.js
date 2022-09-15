@@ -75,7 +75,7 @@ module.exports.checkedGupInputed = async (req, res) => {
   const {id} = req.params
   const daftarSpby = new DaftarSpbyInputed(req.body.gup)
   await daftarSpby.save()
-
+  console.log(daftarSpby)
   const inputedGups = await InputGup.findByIdAndUpdate(id, {checked : daftarSpby._id}).populate('checked')
   const jenisSpbys = await DaftarSpby.findOne({
     jenisSPBy: inputedGups.jenisSpby,
@@ -90,7 +90,6 @@ module.exports.checkedGupInputed = async (req, res) => {
 
   for (let x in jenisSpby ) {
     if(daftarSpby[x] === 'kosong') {
-      console.log('ok')
       await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
     }
   }
