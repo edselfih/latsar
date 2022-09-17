@@ -58,7 +58,9 @@ module.exports.gup = async (req, res) => {
 };
 
 module.exports.createGup = async (req, res) => {
+  const jumlah = req.body.gupTunai.jumlahSpby
   const newGup = new InputGup(req.body.gupTunai)
+  newGup.jumlahSpby = jumlah.replace('.', '')
   newGup.save()
   res.redirect(`/input/gup-tunai/${newGup._id}`);
 };
@@ -72,8 +74,10 @@ module.exports.gupInputed = async (req, res) => {
 };
 
 module.exports.checkedGupInputed = async (req, res) => {
+  const jumlah = req.body.gup.jumlahSpby
   const {id} = req.params
   const daftarSpby = new DaftarSpbyInputed(req.body.gup)
+  daftarSpby.jumlahSpby = jumlah.replace('.', '')
   await daftarSpby.save()
   console.log(daftarSpby)
   const inputedGups = await InputGup.findByIdAndUpdate(id, {checked : daftarSpby._id}).populate('checked')

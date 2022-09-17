@@ -19,25 +19,25 @@
               <div class="d-flex">
                 <div class="mb-3" style="margin-right: 1em;">
                   <label for="nomor-spby" class="form-label">Nomor SPBy</label>
-                  <input type="number" class="form-control" id="nomor-spby" placeholder="<%=inputedGup.nomorSpby%>" name="gupTunai[nomorSpby]"/>
+                  <input type="number" class="form-control" id="nomor-spby" placeholder="<%=inputedGup.nomorSpby%>" name="gupTunai[nomorSpby]" disabled/>
                 </div>
                 <div class="mb-3" style="margin-right: 1em;">
                   <label for="nomor-nd" class="form-label">Nomor ND</label>
-                  <input type="number" class="form-control" id="nomor-nd" placeholder="<%=inputedGup.nomorNd%>" name="gupTunai[nomorNd]"/>
+                  <input type="number" class="form-control" id="nomor-nd" placeholder="<%=inputedGup.nomorNd%>" name="gupTunai[nomorNd]" disabled/>
                 </div>
                 <div class="mb-3" style="margin-right: 1em;">
                   <label for="nomor-st" class="form-label">Nomor ST</label>
-                  <input type="number" class="form-control" id="nomor-st" placeholder="<%=inputedGup.nomorSt%>" name="gupTunai[nomorSt]"/>
+                  <input type="number" class="form-control" id="nomor-st" placeholder="<%=inputedGup.nomorSt%>" name="gupTunai[nomorSt]" disabled/>
                 </div>
               </div>
               <div class="mb-3">
                 <label for="uraian" class="form-label">Uraian</label>
-                <input type="text" class="form-control" id="uraian" placeholder="<%=inputedGup.uraian%>" name="gupTunai[uraian]"/>
+                <input type="text" class="form-control" id="uraian" placeholder="<%=inputedGup.uraian%>" name="gupTunai[uraian]" disabled/>
               </div>
               <label for="jumlah" class="form-label">Jumlah</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Rp</span>
-                <input type="text" class="form-control" id="jumlah" placeholder="<%=inputedGup.jumlahSpby%>" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]">
+                <input type="text" class="form-control" id="jumlah" placeholder="<%=inputedGup.jumlahSpby.toLocaleString('id-ID')%>" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]" disabled>
               </div>
               <div class="mb-3">
                 <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
@@ -60,10 +60,10 @@
           <h4 class="card-title text-center">Pilih Jenis SPBy</h4>
           <hr class="mb-3 mt-4" />
           <form action="/input/gup-tunai/<%= inputedGup._id %>?_method=PUT" method="POST">
-            <label for="jumlah" class="form-label">Input Kwitansi</label>
+            <label for="rupiah jumlah" class="form-label">Input Kwitansi</label>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Rp</span>
-              <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[jumlahSpby]">
+              <input type="text" class="form-control rupiah" id="rupiah jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[jumlahSpby]">
             </div>
 
             <!-- cek list -->
@@ -229,7 +229,7 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaSatu]">
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaSatu]">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
@@ -252,11 +252,11 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaDua]">
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaDua]">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
-                      <input type="text" class="form-control" name="gup[kjsDuaDua]" id="exampleFormControlInput1">
+                      <input type="text" class="form-control " name="gup[kjsDuaDua]" id="exampleFormControlInput1">
                     </div>
                   </div>
                 </div>
@@ -275,7 +275,7 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaTiga]">
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaTiga]">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
@@ -298,7 +298,7 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[ppn]">
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[ppn]">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
@@ -321,7 +321,7 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[final]">
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[final]">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>

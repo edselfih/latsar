@@ -1,4 +1,5 @@
 <% layout('layout/template.ejs') %>
+
 <div class="container">
   <div class="row">
     <div class="col-6">
@@ -37,10 +38,10 @@
                 <label for="uraian" class="form-label">Uraian</label>
                 <input type="text" class="form-control" id="uraian" name="gupTunai[uraian]"/>
               </div>
-              <label for="jumlah" class="form-label">Jumlah</label>
+              <label for="rupiah" class="form-label">Jumlah</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Rp</span>
-                <input type="text" class="form-control" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]">
+                <input type="text" class="form-control rupiah" id="rupiah" placeholder="0" aria-describedby="basic-addon1" value="" name="gupTunai[jumlahSpby]">
               </div>
               <div class="mb-3">
                 <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
@@ -138,6 +139,4 @@
     </div> -->
 
   </div>
-
-  
 </div>

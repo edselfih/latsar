@@ -26,7 +26,7 @@
                 <% if ( inputedGups.jumlahSpby !== jumlahKwitansi) { %> 
                     style="background-color: #dc3545"
                 <% } %> 
-                ><%= inputedGups.jumlahSpby %></th>
+                ><%= inputedGups.jumlahSpby.toLocaleString('id-ID') %></th>
               </tr>
               <tr>
                 <th>Nominal Kuitansi</th>
@@ -34,7 +34,7 @@
                 <% if ( inputedGups.jumlahSpby !== jumlahKwitansi) { %> 
                     style="background-color: #dc3545"
                 <% } %> 
-                ><%= jumlahKwitansi %></th>
+                ><%= jumlahKwitansi.toLocaleString('id-ID') %></th>
               </tr>
               <% for (let x in jenisSpby) { %>
               <tr>
@@ -42,16 +42,16 @@
                 <th><%= checked[x] === 'kosong' ? "-" : "v" %></th>
               </tr>
               <% } %>
-                  <% if (checked && checked.duaSatu) { %><tr><th>Pajak 21</th> <th><%= checked.duaSatu  %><% } %></th></tr>
+                  <% if (checked && checked.duaSatu) { %><tr><th>Pajak 21</th> <th><%= checked.duaSatu.toLocaleString('id-ID')  %><% } %></th></tr>
                   <% if (checked && checked.kjsDuaSatu) { %><tr><th>KJS 21</th> <th><%= checked.kjsDuaSatu  %><% } %></th></tr>
-                  <% if (checked && checked.duaDua) { %><tr><th>Pajak 22</th> <th><%= checked.duaDua  %><% } %></th></tr>
+                  <% if (checked && checked.duaDua) { %><tr><th>Pajak 22</th> <th><%= checked.duaDua.toLocaleString('id-ID')  %><% } %></th></tr>
                   <% if (checked && checked.kjsDuaDua) { %><tr><th>KJS 22</th> <th><%= checked.kjsDuaDua  %><% } %></th></tr>
-                  <% if (checked && checked.duaTiga) { %><tr><th>Pajak 23</th> <th><%= checked.duaTiga  %><% } %></th></tr>
+                  <% if (checked && checked.duaTiga) { %><tr><th>Pajak 23</th> <th><%= checked.duaTiga.toLocaleString('id-ID')  %><% } %></th></tr>
                   <% if (checked && checked.kjsDuaTiga) { %><tr><th>KJS 23</th> <th><%= checked.kjsDuaTiga  %><% } %></th></tr>
-                  <% if (checked && checked.final) { %><tr><th>Pajak 4 ayat 2</th> <th><%= checked.final %><% } %></th></tr>
-                  <% if (checked && checked.kjsPpn) { %><tr><th>KJS final</th> <th><%= checked.kjsPpn  %><% } %></th></tr>
-                  <% if (checked && checked.ppn) { %><tr><th>Pajak PPN</th> <th><%= checked.ppn  %><% } %></th></tr>
+                  <% if (checked && checked.final) { %><tr><th>Pajak 4 ayat 2</th> <th><%= checked.final.toLocaleString('id-ID') %><% } %></th></tr>
                   <% if (checked && checked.kjsFinal) { %><tr><th>KJS PPN</th> <th><%= checked.kjsFinal  %><% } %></th></tr>
+                  <% if (checked && checked.ppn) { %><tr><th>Pajak PPN</th> <th><%= checked.ppn.toLocaleString('id-ID')  %><% } %></th></tr>
+                  <% if (checked && checked.kjsPpn) { %><tr><th>KJS final</th> <th><%= checked.kjsPpn  %><% } %></th></tr>
               <tr>
                 <th>NPWP</th>
                 <th><%= checked.npwp %></th>
