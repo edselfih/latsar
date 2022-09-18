@@ -1,0 +1,323 @@
+<% layout('layout/template.ejs') %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="row justify-content-center pb-6">
+        <div class="card" style="width: auto">
+          <div class="card-body">
+            <h4 class="card-title text-center">SPBy Tunai</h4>
+          </div>
+          <hr class="mb-3 mt-0" />
+ 
+            <form action="/input/gup-tunai" method="POST">
+              <!-- panel 1 -->
+              <div class="mb-3">
+                <label for="jenis-spby" class="form-label">Jenis SPBy</label>
+                <select class="form-select" id="jenis-spby" name="gupTunai[jenisSpby]">
+                  <option selected disabled><%= inputedGup.jenisSpby %></option>
+                </select>
+              </div>
+              <div class="d-flex">
+                <div class="mb-3" style="margin-right: 1em;">
+                  <label for="nomor-spby" class="form-label">Nomor SPBy</label>
+                  <input type="number" class="form-control" id="nomor-spby" placeholder="<%=inputedGup.nomorSpby%>" name="gupTunai[nomorSpby]" disabled/>
+                </div>
+                <div class="mb-3" style="margin-right: 1em;">
+                  <label for="nomor-nd" class="form-label">Nomor ND</label>
+                  <input type="number" class="form-control" id="nomor-nd" placeholder="<%=inputedGup.nomorNd%>" name="gupTunai[nomorNd]" disabled/>
+                </div>
+                <div class="mb-3" style="margin-right: 1em;">
+                  <label for="nomor-st" class="form-label">Nomor ST</label>
+                  <input type="number" class="form-control" id="nomor-st" placeholder="<%=inputedGup.nomorSt%>" name="gupTunai[nomorSt]" disabled/>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="uraian" class="form-label">Uraian</label>
+                <input type="text" class="form-control" id="uraian" placeholder="<%=inputedGup.uraian%>" name="gupTunai[uraian]" disabled/>
+              </div>
+              <label for="jumlah" class="form-label">Jumlah</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Rp</span>
+                <input type="text" class="form-control" id="jumlah" placeholder="<%=inputedGup.jumlahSpby.toLocaleString('id-ID')%>" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]" disabled>
+              </div>
+              <div class="mb-3">
+                <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
+                <select class="form-select" id="daftar-ppk" name="gupTunai[daftarPpk]">
+                  <option selected disabled value="<%= inputedGup.ppk %>"><%=inputedGup.ppk%></option>
+                </select>
+              </div>
+              <div class="d-flex justify-content-end mb-3">
+                <button type="submit" class="btn btn-success">Next</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <!-- panel 2 -->
+      <div class="card" style="width: auto; height: auto;">
+        <div class="card-body">
+          <h4 class="card-title text-center">Pilih Jenis SPBy</h4>
+          <hr class="mb-3 mt-4" />
+          <form action="/input/gup-tunai/update/<%= inputedGup._id %>?_method=PUT" method="POST">
+            <label for="rupiah jumlah" class="form-label">Input Kwitansi</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Rp</span>
+              <input type="text" class="form-control rupiah" id="rupiah jumlah" value="<%= inputedGup.checked.jumlahSpby.toLocaleString('id-ID')%>" aria-describedby="basic-addon1" name="gup[jumlahSpby]">
+            </div>
+
+            <!-- cek list -->
+            <div>
+              <% if (daftarSpbys.ttdPPK) {  %> 
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[ttdPPK]" type="checkbox" value="<%= daftarSpbys.ttdPPK %>" id="<%= daftarSpbys.ttdPPK %>" <%= inputedGup.checked.ttdPPK !== 'kosong' ? "checked" : "" %>  >
+                  <label class="form-check-label" for="<%= daftarSpbys.ttdPPK %>" >
+                    <%= daftarSpbys.ttdPPK %>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.pengeluaranRiil) { %> 
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[pengeluaranRiil]" type="checkbox" value="<%=daftarSpbys.pengeluaranRiil%>" id="<%=daftarSpbys.pengeluaranRiil%>" <%= inputedGup.checked.pengeluaranRiil !== 'kosong' ? "checked" : "" %>  >
+                  <label class="form-check-label" for="<%=daftarSpbys.pengeluaranRiil%>" >
+                    <%=daftarSpbys.pengeluaranRiil%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.persetujuanPBJ) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[persetujuanPBJ]" type="checkbox" value="<%=daftarSpbys.persetujuanPBJ%>" id="<%=daftarSpbys.persetujuanPBJ%>" <%= inputedGup.checked.persetujuanPBJ !== 'kosong' ? "checked": '' %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.persetujuanPBJ%>" >
+                    <%=daftarSpbys.persetujuanPBJ%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.spd) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[spd]" type="checkbox" value="<%=daftarSpbys.spd%>" id="<%=daftarSpbys.checked.spd%>" <%= daftarSpbys.spd !== 'kosong' ? "checked": "" %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.spd%>" >
+                    <%=daftarSpbys.spd%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.memoPerintahBayar) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[memoPerintahBayar]" type="checkbox" value="<%=daftarSpbys.memoPerintahBayar%>" id="<%=daftarSpbys.memoPerintahBayar%>" <%= inputedGup.checked.memoPerintahBayar !== 'kosong' ? "checked": "" %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.memoPerintahBayar%>" >
+                    <%=daftarSpbys.memoPerintahBayar%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.permohonanPembayaran) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[permohonanPembayaran]" type="checkbox" value="<%=daftarSpbys.permohonanPembayaran%>" id="<%=daftarSpbys.permohonanPembayaran%>" <%= inputedGup.checked.permohonanPembayaran %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.permohonanPembayaran%>" >
+                    <%=daftarSpbys.permohonanPembayaran%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.notaDinas) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[notaDinas]" type="checkbox" value="<%=daftarSpbys.notaDinas%>" id="<%=daftarSpbys.notaDinas%>" <%= inputedGup.checked.notaDinas !== 'kosong' ? "checked": "" %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.notaDinas%>" >
+                    <%=daftarSpbys.notaDinas%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.suratTugas) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[suratTugas]" type="checkbox" value="<%=daftarSpbys.suratTugas%>" id="<%=daftarSpbys.suratTugas%>" <%= inputedGup.checked.suratTugas %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.suratTugas%>" >
+                    <%=daftarSpbys.suratTugas%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.kesesuaianSBM) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[kesesuaianSBM]" type="checkbox" value="<%=daftarSpbys.kesesuaianSBM%>" id="<%=daftarSpbys.kesesuaianSBM%>" <%= inputedGup.checked.kesesuaianSBM !== 'kosong' ? "checked": "" %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.kesesuaianSBM%>" >
+                    <%=daftarSpbys.kesesuaianSBM%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.buktiPembayaranKKP) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[buktiPembayaranKKP]" type="checkbox" value="<%=daftarSpbys.buktiPembayaranKKP%>" id="<%=daftarSpbys.buktiPembayaranKKP%>" <%= inputedGup.checked.buktiPembayaranKKP !== 'kosong' ? "checked": "" %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.buktiPembayaranKKP%>" >
+                    <%=daftarSpbys.buktiPembayaranKKP%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.absensi) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[absensi]" type="checkbox" value="<%=daftarSpbys.absensi%>" id="<%=daftarSpbys.absensi%>" <%= inputedGup.checked.absensi !== 'kosong' ? "checked": "" %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.absensi%>" >
+                    <%=daftarSpbys.absensi%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.spj) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[spj]" type="checkbox" value="<%=daftarSpbys.spj%>" id="<%=daftarSpbys.spj%>" <%= inputedGup.checked.spj !== 'kosong' ? "checked": "" %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.spj%>" >
+                    <%=daftarSpbys.spj%>
+                  </label>
+                </div>
+              <% } %>
+              <% if (daftarSpbys.rincianTransport) { %>
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[rincianTransport]" type="checkbox" value="<%=daftarSpbys.rincianTransport%>" id="<%=daftarSpbys.rincianTransport%>" <%= inputedGup.checked.rincianTransport !== 'kosong' ? "checked": "" %> >
+                  <label class="form-check-label" for="<%=daftarSpbys.rincianTransport%>" >
+                    <%=daftarSpbys.rincianTransport%>
+                  </label>
+                </div>
+              <% } %>
+  
+              <% if (daftarSpbys.lainlain ) { %> <% for ( lain of daftarSpbys.lainlain) { %> 
+                <div class="mt-3">
+                  <input class="form-check-input" name="gup[<%=lain.desc%>]" type="checkbox" value="<%=daftarSpbys.lain.desc%>" id="<%=lain.desc%>">
+                  <label class="form-check-label" for="<%=lain.desc%>" >
+                    <%=lain.desc%>
+                  </label>
+                </div>
+              <% }}%>
+            </div>
+          
+            <!-- pajak: -->
+            <!-- pph 21 -->
+            <div class="accordion mt-3 mb-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    PPh 21
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <label for="jumlah" class="form-label">Jumlah Pajak</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Rp</span>
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaSatu]">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
+                      <input type="text" class="form-control" name="gup[kjsDuaSatu]" id="exampleFormControlInput1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- PPh 22 -->
+            <div class="accordion mt-3 mb-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    PPh 22
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <label for="jumlah" class="form-label">Jumlah Pajak</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Rp</span>
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaDua]">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
+                      <input type="text" class="form-control " name="gup[kjsDuaDua]" id="exampleFormControlInput1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- PPh 23 -->
+            <div class="accordion mt-3 mb-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                    PPh 23
+                  </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <label for="jumlah" class="form-label">Jumlah Pajak</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Rp</span>
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaTiga]">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
+                      <input type="text" class="form-control" name="gup[kjsDuaTiga]" id="exampleFormControlInput1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- PPN -->
+            <div class="accordion mt-3 mb-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                    PPN
+                  </button>
+                </h2>
+                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <label for="jumlah" class="form-label">Jumlah Pajak</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Rp</span>
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[ppn]">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
+                      <input type="text" class="form-control" name="gup[kjsPnn]" id="exampleFormControlInput1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- PPh Final -->
+            <div class="accordion mt-3 mb-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                    PPh Final
+                  </button>
+                </h2>
+                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <label for="jumlah" class="form-label">Jumlah Pajak</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Rp</span>
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[final]">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
+                      <input type="text" class="form-control" name="gup[kjsFinal]" id="exampleFormControlInput1">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">NPWP</label>
+              <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="00.123.875.7-074.000" name="gup[npwp]">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Nama Rekanan</label>
+              <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="PT. Ines" name="gup[rekanan]">
+            </div>
+            <div class="d-flex justify-content-end mb-3 mt-3">
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>

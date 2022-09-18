@@ -79,7 +79,6 @@ module.exports.checkedGupInputed = async (req, res) => {
   const daftarSpby = new DaftarSpbyInputed(req.body.gup)
   daftarSpby.jumlahSpby = jumlah.replace('.', '')
   await daftarSpby.save()
-  console.log(daftarSpby)
   const inputedGups = await InputGup.findByIdAndUpdate(id, {checked : daftarSpby._id}).populate('checked')
   const jenisSpbys = await DaftarSpby.findOne({
     jenisSPBy: inputedGups.jenisSpby,
@@ -98,4 +97,55 @@ module.exports.checkedGupInputed = async (req, res) => {
     }
   }
   res.redirect('/monitoring')
+};
+
+
+// update
+
+module.exports.updateGupInputedPage = async (req, res) => {
+  const {id} = req.params
+  const inputedGup = await InputGup.findById(id).populate('checked')
+  const daftarSpbys= await DaftarSpby.findOne({jenisSPBy: `${inputedGup.jenisSpby}`})
+  const daftarPpks= await DaftarPpk.find({});
+  res.render("./input/update-spby", {daftarPpks, daftarSpbys, inputedGup ,id});
+};
+
+module.exports.updateGupInputed = async (req, res) => {
+  const {id} = req.params
+  const updatedChecked = req.body.gup
+  updatedChecked.jumlahSpby = updatedChecked.jumlahSpby.replace('.', '')
+  const daftarSpby = new DaftarSpbyInputed(updatedChecked)
+  daftarSpby.save()
+  const inputedGups = await InputGup.findById(id)
+  await DaftarSpbyInputed.findByIdAndRemove(inputedGups.checked._id)
+  inputedGups.checked = daftarSpby
+  inputedGups.save()
+  console.log('cek')
+  console.log(updatedChecked)
+  const jenisSpbys = await DaftarSpby.findOne({
+    jenisSPBy: inputedGups.jenisSpby,
+  });
+  const jenisSpby = jenisSpbys.toObject()
+  delete jenisSpby._id
+  delete jenisSpby.jenis
+  delete jenisSpby.jenisSPBy
+  delete jenisSpby.pajak
+  delete jenisSpby.lainlain
+  delete jenisSpby.__v
+
+  for (let x in jenisSpby ) {
+    if(daftarSpby[x] === '') {
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
+    }
+  }
+  res.redirect("/monitoring")
+};
+
+// delete
+module.exports.gupInputedDelete = async (req, res) => {
+  const {id} = req.params
+  const inputedGups = await InputGup.findByIdAndRemove(id)
+  const checked = await DaftarSpbyInputed.findByIdAndRemove(inputedGups.checked._id)
+  console.log(checked)
+  res.redirect("/monitoring")
 };

@@ -10,18 +10,25 @@
                   <th scope="col">No Spby</th>
                   <th scope="col">Status</th>
                   <th scope="col">Detail</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Delete</th>
                 </tr>
               </thead>
               <tbody>
                 <% let nomor = 0 %> 
                 <%for (inputedGup of inputedGups) {%>
                     <% nomor = nomor + 1 %>
-                    <% console.log(inputedGup._id) %> 
                     <tr>
                         <th scope="row"><%= nomor %></th>
                         <td><%= inputedGup.nomorSpby %></td>
                         <td><%= inputedGup.kelengkapan %></td>
                         <td><a class="btn btn-warning" href='/monitoring/<%=inputedGup._id%>' role="button">Lihat</a></td>
+                        <td><a class="btn btn-success" href='/input/gup-tunai/update/<%=inputedGup._id%>' role="button">Update</a></td>
+                        <td>
+                          <form action="/input/gup-tunai/<%=inputedGup._id%>?_method=delete" method="POST">
+                            <button class="btn btn-danger" >Delete</button>
+                          </form>
+                        </td>
                     </tr>
                 <% } %> 
         

@@ -27,6 +27,11 @@ router.route('/')
     router.route('/gup-tunai/:id')
     .get( inputController.gupInputed)
     .put( inputController.checkedGupInputed)
+    .delete (inputController.gupInputedDelete)
+
+    router.route('/gup-tunai/update/:id')
+    .get( inputController.updateGupInputedPage)
+    .put( inputController.updateGupInputed)
     
 
 module.exports = router;

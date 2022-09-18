@@ -10,7 +10,6 @@ module.exports.detailSpby = async (req, res) => {
   const { id } = req.params;
   const inputedGups = await InputGup.findById(id).populate("checked");
   checked = inputedGups.checked
-  console.log(checked)
   const jenisSpbys = await DaftarSpby.findOne({
     jenisSPBy: inputedGups.jenisSpby,
   });
