@@ -37,7 +37,7 @@
               <label for="jumlah" class="form-label">Jumlah</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Rp</span>
-                <input type="text" class="form-control" id="jumlah" placeholder="<%=inputedGup.jumlahSpby.toLocaleString('id-ID')%>" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]" disabled>
+                <input type="text" class="form-control" id="jumlah" placeholder="<%=inputedGup.jumlahSpby.toLocaleString('id-ID')%>" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]" disabled required>
               </div>
               <div class="mb-3">
                 <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
@@ -175,7 +175,7 @@
   
               <% if (daftarSpbys.lainlain ) { %> <% for ( lain of daftarSpbys.lainlain) { %> 
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[<%=lain.desc%>]" type="checkbox" value="<%=lain.desc%>" id="<%=lain.desc%>">
+                  <input class="form-check-input" name="gup[lainlain]" type="checkbox" value="<%=lain.desc%>" id="<%=lain.desc%>">
                   <label class="form-check-label" for="<%=lain.desc%>" >
                     <%=lain.desc%>
                   </label>

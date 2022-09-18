@@ -173,14 +173,20 @@
                   </label>
                 </div>
               <% } %>
-  
-              <% if (daftarSpbys.lainlain ) { %> <% for ( lain of daftarSpbys.lainlain) { %> 
+
+              <% if (daftarSpbys.lainlain ) { %> <% for ( lain of daftarSpbys.lainlain) { %>
+                 
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[<%=lain.desc%>]" type="checkbox" value="<%=daftarSpbys.lain.desc%>" id="<%=lain.desc%>">
+                  <input class="form-check-input" name="gup[lainlain]" type="checkbox" value="<%=lain.desc%>" id="<%=lain.desc%>"
+                  <% for ( let i = 0 ; i <= inputedGup.checked.lainlain.length ; i ++ ) { %>
+                    <%= inputedGup.checked.lainlain[i] === lain.desc ? "checked": "" %>
+                  <% } %> 
+                  >
                   <label class="form-check-label" for="<%=lain.desc%>" >
                     <%=lain.desc%>
                   </label>
                 </div>
+
               <% }}%>
             </div>
           

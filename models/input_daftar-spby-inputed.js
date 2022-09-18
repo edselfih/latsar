@@ -55,6 +55,9 @@ const daftarSPByInputSchema = new Schema ({
         type: String,
         default: 'kosong'
     },
+    lainlain: [
+        String
+    ],
     pajakNpwp: {
         type: String,
         default: 'kosong'

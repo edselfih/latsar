@@ -12,15 +12,17 @@ module.exports.detailSpby = async (req, res) => {
   checked = inputedGups.checked
   const jenisSpbys = await DaftarSpby.findOne({
     jenisSPBy: inputedGups.jenisSpby,
-  });
+  }).populate('lainlain');
   const jumlahKwitansi = checked.jumlahSpby
   const jenisSpby = jenisSpbys.toObject()
+  const lainlain = jenisSpby.lainlain 
+  console.log(lainlain)
   delete jenisSpby._id
   delete jenisSpby.jenis
   delete jenisSpby.jenisSPBy
-  delete jenisSpby.pajak
   delete jenisSpby.lainlain
+  delete jenisSpby.pajak
   delete jenisSpby.__v
 
-  res.render(`./monitoring/detail`, { inputedGups, jenisSpby, checked, jumlahKwitansi });
+  res.render(`./monitoring/detail`, { inputedGups, jenisSpby, checked, jumlahKwitansi, lainlain });
 };

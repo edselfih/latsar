@@ -42,6 +42,19 @@
                 <th><%= checked[x] === 'kosong' ? "-" : "v" %></th>
               </tr>
               <% } %>
+              <% for (let i = 0 ; i < lainlain.length ; i++) {%>
+                <tr>
+                  <th ><%= lainlain[i].desc %></th>
+                  <th>
+                    <% for (let a = 0 ; a < checked.lainlain.length ; a++ ) { %> 
+                      <%= checked.lainlain[a] === lainlain[i].desc  ? "v" : "" %>
+                    <% } %>
+                    <% for (let a = 0 ; a < checked.lainlain.length ; a++ ) { %> 
+                      <%= checked.lainlain[a] !== lainlain[i].desc  ? "-" : "" %>
+                    <% } %>
+                  </th>
+                </tr>
+                <% } %>
                   <% if (checked && checked.duaSatu) { %><tr><th>Pajak 21</th> <th><%= checked.duaSatu.toLocaleString('id-ID')  %><% } %></th></tr>
                   <% if (checked && checked.kjsDuaSatu) { %><tr><th>KJS 21</th> <th><%= checked.kjsDuaSatu  %><% } %></th></tr>
                   <% if (checked && checked.duaDua) { %><tr><th>Pajak 22</th> <th><%= checked.duaDua.toLocaleString('id-ID')  %><% } %></th></tr>
