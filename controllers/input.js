@@ -128,11 +128,13 @@ module.exports.updateGupInputed = async (req, res) => {
   delete jenisSpby.jenisSPBy
   delete jenisSpby.pajak
   delete jenisSpby.__v
-
   for (let x in jenisSpby ) {
-    if(daftarSpby[x] === '') {
+    console.log(x)
+    if(daftarSpby[x]=== 'kosong') {
       await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
+      return res.redirect("/monitoring")
     }
+    await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Lengkap'})
   }
   res.redirect("/monitoring")
 };
