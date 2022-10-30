@@ -10,7 +10,7 @@
           </div>
           <hr class="mb-3 mt-0" />
 
-            <form action="/input/gup-tunai" method="POST">
+            <form action="/input/gup-tunai" class="needs-validation" method="POST">
               <div class="mb-3">
                 <label for="jenis-spby" class="form-label">Jenis SPBy</label>
                 <select class="form-select" id="jenis-spby" name="gupTunai[jenisSpby]">
@@ -23,7 +23,7 @@
               <div class="d-flex">
                 <div class="mb-3" style="margin-right: 1em;">
                   <label for="nomor-spby" class="form-label">Nomor SPBy</label>
-                  <input type="number" class="form-control" id="nomor-spby" placeholder="0" name="gupTunai[nomorSpby]"/>
+                  <input type="number" class="form-control" id="nomor-spby" placeholder="0" name="gupTunai[nomorSpby]" required/>
                 </div>
                 <div class="mb-3" style="margin-right: 1em;">
                   <label for="nomor-nd" class="form-label">Nomor ND</label>
@@ -41,11 +41,11 @@
               <label for="rupiah" class="form-label">Jumlah</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Rp</span>
-                <input type="text" class="form-control rupiah" id="rupiah" placeholder="0" aria-describedby="basic-addon1" value="" name="gupTunai[jumlahSpby]">
+                <input type="text" class="form-control rupiah" id="rupiah" placeholder="0" aria-describedby="basic-addon1" value="" name="gupTunai[jumlahSpby]" required>
               </div>
               <div class="mb-3">
                 <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
-                <select class="form-select" id="daftar-ppk" name="gupTunai[ppk]">
+                <select class="form-select" id="daftar-ppk" name="gupTunai[ppk]" required>
                   <option selected disabled>Pilih PPK</option>
                   <% for (daftarPpk of daftarPpks) { %>
                     <option value="<%= daftarPpk.namaPpk %>"><%= daftarPpk.namaPpk %></option>
