@@ -13,10 +13,10 @@
             <form action="/input/gup-tunai" class="needs-validation" method="POST">
               <div class="mb-3">
                 <label for="jenis-spby" class="form-label">Jenis SPBy</label>
-                <select class="form-select" id="jenis-spby" name="gupTunai[jenisSpby]">
-                  <option selected disabled>Pilih Jenis SPBy</option>
+                <select class="form-select" id="jenis-spby" name="gupTunai[jenisSpby]" required>
+                  <option selected value="" disabled>Pilih Jenis SPBy </option>
                   <% for (jenisSpby of jenisSpbys) { %>
-                    <option value="<%= jenisSpby.jenisSPBy %>"><%= jenisSpby.jenisSPBy %> </option>
+                    <option value="<%= jenisSpby.jenisSPBy %>"><%= jenisSpby.jenisSPBy %></option>
                   <% } %>
                 </select>
               </div>
@@ -46,7 +46,7 @@
               <div class="mb-3">
                 <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
                 <select class="form-select" id="daftar-ppk" name="gupTunai[ppk]" required>
-                  <option selected disabled>Pilih PPK</option>
+                  <option selected value="" disabled>Pilih PPK</option>
                   <% for (daftarPpk of daftarPpks) { %>
                     <option value="<%= daftarPpk.namaPpk %>"><%= daftarPpk.namaPpk %></option>
                   <% } %>  
