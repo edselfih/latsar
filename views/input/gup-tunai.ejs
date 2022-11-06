@@ -14,7 +14,9 @@
               <div class="mb-3">
                 <label for="jenis-spby" class="form-label">Jenis SPBy</label>
                 <select class="form-select" id="jenis-spby" name="gupTunai[jenisSpby]" required>
+
                   <option selected value="" disabled>Pilih Jenis SPBy</option>
+
                   <% for (jenisSpby of jenisSpbys) { %>
                     <option value="<%= jenisSpby.jenisSPBy %>"><%= jenisSpby.jenisSPBy %></option>
                   <% } %>
@@ -36,7 +38,7 @@
               </div>
               <div class="mb-3">
                 <label for="uraian" class="form-label">Uraian</label>
-                <input type="text" class="form-control" id="uraian" name="gupTunai[uraian]"/>
+                <input type="text" class="form-control" id="uraian" name="gupTunai[uraian]"required/>
               </div>
               <label for="rupiah" class="form-label">Jumlah</label>
               <div class="input-group mb-3">
