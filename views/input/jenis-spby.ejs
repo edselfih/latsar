@@ -50,7 +50,7 @@
     <!-- ini table:    -->
     <div class="row justify-content-center mt-4">
       <div class="card" style="width: 48rem; background-color: white; padding-left: 0em; padding-right: 0em;">
-         
+        <div style="overflow:scroll; height:350px;">
         <div class="card-body">          
             <table class="table table-bordered mb-0">
               <tbody>            
@@ -194,93 +194,60 @@
                     </td>
                   </div>
                 </tr>
-                <!-- baris 5 -->
-                <tr>
-                  <td class="align-middle">
-                    <div >
-                      <div class="form-check">
-                        <input class="form-check-input" name="memoPerintahBayar" type="checkbox" value="Memo Perintah Bayar" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          Memo Perintah Bayar
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-                  <!-- <td class="align-middle">
-                    <div class="form-check" style="padding-left: 0.7em ;">
-                    <p class="mb-0">
-                      <a class="btn btn-light" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Pajak</a>
-                    </p>
-                    <div class="row">
-                      <div class="col">
-                        <div class="collapse multi-collapse" id="multiCollapseExample1">
-                          <div class="form-check">
-                              <input class="form-check-input" name="pajak[duaSatu]" type="checkbox" value="PPh 21" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault" aria-checked="true">
-                                21
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" name="pajak[duaDua]" type="checkbox" value="PPh 22" id="flexCheckChecked">
-                              <label class="form-check-label" for="flexCheckChecked">
-                                22
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" name="pajak[duaTiga]" type="checkbox" value="PPh 23" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                23
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" name="pajak[final]" type="checkbox" value="Pasal 4 ayat 2" id="flexCheckChecked">
-                              <label class="form-check-label" for="flexCheckChecked">
-                                4 ayat 2
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" name="pajak[ppn]" type="checkbox" value="PPN" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                PPN
-                              </label>
-                            </div>
-                        </div>
-                      </div>            
-                    </label>
-                    </div>
-                  </td> -->
-                  <td class="align-middle">
-                    <div class="form-check" style="padding-left: 0.7em ;">
-                      <p class="mb-0">
-                        <a class="btn btn-light" data-bs-toggle="collapse" href="#CollapseExample1" role="button" aria-expanded="false" aria-controls="#CollapseExample1">Lain-lain</a>
-                      </p>
-                      <div>
-                        <div class="collapse multi-collapse" id="CollapseExample1">
-                            <div class="row">
-                              <div>
-                                <ul>
-                                    <% for ( lain of lainlain) { %>
-                                      <div class="mt-3">
-                                        <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lain._id%>" id="flexCheckDefault-<%=lain._id%>">
-                                        <label class="form-check-label" for="flexCheckDefault-<%=lain._id%>" >
-                                          <%= lain.desc %>
-                                        </label>
-                                      </div>
-                                    <% } %> 
-                                </ul>
-                              </div>
-                            </div>
                 
+                <!-- baris 5 -->
+                <%for (let i=0;i<lainlain.length;i+=3){ %>
+                <tr>
+                  <div class="row">
+                    <td class="col-4">
+                      <div>
+                        <% if (lainlain[i]){ %>
+                        <div class="form-check">
+                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i]%>" id="flexCheckDefault-<%=lain[i]%>">
+                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i]%>">
+                            
+                              <%= lainlain[i].desc %>
+                            
+                          </label>
                         </div>
-                      </div>    
-                    </div>                    
-                  </td>
-                </tr>
+                        <% } %>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <% if (lainlain[i+1]){ %>
+                        <div class="form-check">
+                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i+1]%>" id="flexCheckDefault-<%=lain[i+1]%>">
+                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i+1]%>">
+                            
+                              <%= lainlain[i+1].desc %>
+                            
+                          </label>
+                        </div>
+                        <% } %>
+                      </div>
+                    </td>
+                    <td class="col-4">
+                      <div>
+                        <% if (lainlain[i+2]){ %>
+                        <div class="form-check">
+                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i+2]%>" id="flexCheckDefault-<%=lain[i+2]%>">
+                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i+2]%>">                            
+                          <%= lainlain[i+2].desc %>                            
+                          </label>
+                        </div>
+                        <% } %>
+                      </div>
+                    </td>
+                  </div>
+                </tr>                
+                <% } %>
               </tbody>
             </table>
                   <!-- <input class="form-control" type="text" placeholder="Default input" aria-label="default input example">
               <button type="button" class="btn btn-primary">Submit</button> -->
           </div>
+        </div>
         <div class="pb-3 d-flex justify-content-end" style="padding-right: 1em">
           <button class="btn btn-success">Submit</button>
         </div>  
