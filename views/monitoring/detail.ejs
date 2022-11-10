@@ -55,15 +55,20 @@
               </tr>
               <% } %>
               <% for (let i = 0 ; i < lainlain.length ; i++) {%>
+                <% let status = 0 %> 
                 <tr>
                   <th ><%= lainlain[i].desc %></th>
                   <th>
-                    <% for (let a = 0 ; a < checked.lainlain.length ; a++ ) { %> 
-                      <%= checked.lainlain[a] === lainlain[i].desc  ? "v" : "" %>
+                    <% for (let a = 0 ; a < checked.lainlain.length ; a++ ) { console.log(`ini yg ada: ${checked.lainlain[a]}, ini yang seharusnya ada: ${lainlain[i].desc}, kesimpulan:${checked.lainlain[a] == lainlain[i].desc} `)%> 
+                      <% if (checked.lainlain[a] == lainlain[i].desc) { %>
+                        <% status = status + 1 %>
+
+                      <% } else {%>
+                        <%status = status + 0 %>
+                          
+                      <% } %> 
                     <% } %>
-                    <% for (let a = 0 ; a < checked.lainlain.length ; a++ ) { %> 
-                      <%= checked.lainlain[a] !== lainlain[i].desc  ? "-" : "" %>
-                    <% } %>
+                    <%= status === 1 ? 'v' : '-' %> 
                   </th>
                 </tr>
                 <% } %>

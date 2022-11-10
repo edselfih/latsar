@@ -59,8 +59,9 @@ module.exports.gup = async (req, res) => {
 
 module.exports.createGup = async (req, res) => {
   const jumlah = req.body.gupTunai.jumlahSpby
+  console.log(`ini jumlah ${jumlah}`)
   const newGup = new InputGup(req.body.gupTunai)
-  newGup.jumlahSpby = jumlah.replace('.', '')
+  newGup.jumlahSpby = jumlah.replaceAll('.', '')
   newGup.save()
   res.redirect(`/input/gup-tunai/${newGup._id}`);
 };
@@ -77,7 +78,7 @@ module.exports.checkedGupInputed = async (req, res) => {
   const jumlah = req.body.gup.jumlahSpby
   const {id} = req.params
   const daftarSpby = new DaftarSpbyInputed(req.body.gup)
-  daftarSpby.jumlahSpby = jumlah.replace('.', '')
+  daftarSpby.jumlahSpby = jumlah.replaceAll('.', '')
   await daftarSpby.save()
   const inputedGups = await InputGup.findByIdAndUpdate(id, {checked : daftarSpby._id}).populate('checked')
   const jenisSpbys = await DaftarSpby.findOne({
@@ -112,7 +113,8 @@ module.exports.updateGupInputedPage = async (req, res) => {
 module.exports.updateGupInputed = async (req, res) => {
   const {id} = req.params
   const updatedChecked = req.body.gup
-  updatedChecked.jumlahSpby = updatedChecked.jumlahSpby.replace('.', '')
+  updatedChecked.jumlahSpby = updatedChecked.jumlahSpby.replaceAll('.', '')
+  console.log(updatedChecked.jumlahSpby)
   const daftarSpby = new DaftarSpbyInputed(updatedChecked)
   daftarSpby.save()
   const inputedGups = await InputGup.findById(id)
@@ -129,8 +131,12 @@ module.exports.updateGupInputed = async (req, res) => {
   delete jenisSpby.pajak
   delete jenisSpby.__v
   for (let x in jenisSpby ) {
-    console.log(x)
-    if(daftarSpby[x]=== 'kosong') {
+    
+    if(daftarSpby[x]=== 'kosong' ) {
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
+      return res.redirect("/monitoring")
+    }
+    if(daftarSpby.lainlain.length !== jenisSpby.lainlain.length){
       await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
       return res.redirect("/monitoring")
     }

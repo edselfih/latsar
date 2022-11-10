@@ -38,7 +38,7 @@
               <label for="jumlah" class="form-label">Jumlah</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Rp</span>
-                <input type="text" class="form-control" id="jumlah" placeholder="<%=inputedGup.jumlahSpby.toLocaleString('id-ID')%>" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]" disabled>
+                <input type="text" class="form-control" id="jumlah" placeholder="<%=inputedGup.jumlahSpby.toLocaleString('id-ID')%>" value="<%=inputedGup.jumlahSpby%>" aria-describedby="basic-addon1" name="gupTunai[jumlahSpby]" disabled>
               </div>
               <div class="mb-3">
                 <label for="daftar-ppk" class="form-label">Pejabat Pembuat Komitmen</label>
@@ -64,7 +64,7 @@
             <label for="rupiah jumlah" class="form-label">Input Kwitansi</label>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Rp</span>
-              <input type="text" class="form-control rupiah" id="rupiah jumlah" value="<%= inputedGup.checked.jumlahSpby.toLocaleString('id-ID')%>" aria-describedby="basic-addon1" name="gup[jumlahSpby]">
+              <input type="text" class="form-control rupiah" id="rupiah jumlah" value="<%= inputedGup.checked.jumlahSpby%>" aria-describedby="basic-addon1" name="gup[jumlahSpby]">
             </div>
 
             <!-- cek list -->
