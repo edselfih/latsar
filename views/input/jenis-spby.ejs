@@ -203,8 +203,8 @@
                       <div>
                         <% if (lainlain[i]){ %>
                         <div class="form-check">
-                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i]%>" id="flexCheckDefault-<%=lainlain[i]%>">
-                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i]%>">
+                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i]._id%>" id="flexCheckDefault-<%=lainlain[i]._id%>">
+                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i]._id%>">
                             
                               <%= lainlain[i].desc %>
                             
@@ -217,8 +217,8 @@
                       <div>
                         <% if (lainlain[i+1]){ %>
                         <div class="form-check">
-                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i+1]%>" id="flexCheckDefault-<%=lainlain[i+1]%>">
-                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i+1]%>">
+                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i+1]._id%>" id="flexCheckDefault-<%=lainlain[i+1]._id%>">
+                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i+1]._id%>">
                             
                               <%= lainlain[i+1].desc %>
                             
@@ -231,8 +231,8 @@
                       <div>
                         <% if (lainlain[i+2]){ %>
                         <div class="form-check">
-                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i+2]%>" id="flexCheckDefault-<%=lainlain[i+2]%>">
-                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i+2]%>">                            
+                          <input class="form-check-input" name="lainlain" type="checkbox" value="<%=lainlain[i+2]._id%>" id="flexCheckDefault-<%=lainlain[i+2]._id%>">
+                          <label class="form-check-label" for="flexCheckDefault-<%=lainlain[i+2]._id%>">                            
                           <%= lainlain[i+2].desc %>                            
                           </label>
                         </div>
@@ -295,7 +295,7 @@
               <div class="d-flex pl-1">
                 <th scope="col" class="">No</th>
                 <th scope="col" class="flex-grow">Jenis SPBy</th>
-                <th scope="col" class="">Tunai/KKP</th>
+                
                 <th scope="col" class="">Kelengkapan</th>
               </div>
             </div>
@@ -308,7 +308,7 @@
           <tr>
             <th scope="row"><%= nomor %></th>
             <td><%= jenisSpby.jenisSPBy %></td>
-            <td><%= jenisSpby.jenis %></td>
+            
             <td>
               <% if (jenisSpby.ttdPPK) { %> <p><%= jenisSpby.ttdPPK %>,  <% } %>
               <% if (jenisSpby.pengeluaranRiil) { %> <%= jenisSpby.pengeluaranRiil %>, <% } %>
