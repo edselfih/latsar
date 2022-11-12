@@ -66,6 +66,10 @@
               <span class="input-group-text" id="basic-addon1">Rp</span>
               <input type="text" class="form-control rupiah" id="rupiah jumlah" value="<%= inputedGup.checked.jumlahSpby%>" aria-describedby="basic-addon1" name="gup[jumlahSpby]">
             </div>
+            <div class="mb-3">
+              <label for="nomorkwitansi" class="form-label">Nomor Kwitansi</label>
+              <input type="text" class="form-control" id="nomorkwitansi" value="<%= inputedGup.checked.nomorkwitansi%>" name="gup[nomorkwitansi]">
+            </div>
 
             <!-- cek list -->
             <div>
@@ -87,7 +91,7 @@
               <% } %>
               <% if (daftarSpbys.persetujuanPBJ) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[persetujuanPBJ]" type="checkbox" value="<%=daftarSpbys.persetujuanPBJ%>" id="<%=daftarSpbys.persetujuanPBJ%>" <%= inputedGup.checked.persetujuanPBJ !== 'kosong' ? "checked": '' %> >
+                  <input class="form-check-input" name="gup[persetujuanPBJ]" type="checkbox" value="<%=daftarSpbys.persetujuanPBJ%>" id="<%=daftarSpbys.persetujuanPBJ%>" <%= inputedGup.checked.persetujuanPBJ !== 'kosong' ? "checked" : '' %> >
                   <label class="form-check-label" for="<%=daftarSpbys.persetujuanPBJ%>" >
                     <%=daftarSpbys.persetujuanPBJ%>
                   </label>
@@ -95,7 +99,7 @@
               <% } %>
               <% if (daftarSpbys.spd) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[spd]" type="checkbox" value="<%=daftarSpbys.spd%>" id="<%=daftarSpbys.checked.spd%>" <%= daftarSpbys.spd !== 'kosong' ? "checked": "" %> >
+                  <input class="form-check-input" name="gup[spd]" type="checkbox" value="<%=daftarSpbys.spd%>" id="<%=daftarSpbys.checked.spd%>" <%= daftarSpbys.spd !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.spd%>" >
                     <%=daftarSpbys.spd%>
                   </label>
@@ -103,7 +107,7 @@
               <% } %>
               <% if (daftarSpbys.memoPerintahBayar) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[memoPerintahBayar]" type="checkbox" value="<%=daftarSpbys.memoPerintahBayar%>" id="<%=daftarSpbys.memoPerintahBayar%>" <%= inputedGup.checked.memoPerintahBayar !== 'kosong' ? "checked": "" %> >
+                  <input class="form-check-input" name="gup[memoPerintahBayar]" type="checkbox" value="<%=daftarSpbys.memoPerintahBayar%>" id="<%=daftarSpbys.memoPerintahBayar%>" <%= inputedGup.checked.memoPerintahBayar !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.memoPerintahBayar%>" >
                     <%=daftarSpbys.memoPerintahBayar%>
                   </label>
@@ -111,7 +115,7 @@
               <% } %>
               <% if (daftarSpbys.permohonanPembayaran) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[permohonanPembayaran]" type="checkbox" value="<%=daftarSpbys.permohonanPembayaran%>" id="<%=daftarSpbys.permohonanPembayaran%>" <%= inputedGup.checked.permohonanPembayaran %> >
+                  <input class="form-check-input" name="gup[permohonanPembayaran]" type="checkbox" value="<%=daftarSpbys.permohonanPembayaran%>" id="<%=daftarSpbys.permohonanPembayaran%>" <%= inputedGup.checked.permohonanPembayaran !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.permohonanPembayaran%>" >
                     <%=daftarSpbys.permohonanPembayaran%>
                   </label>
@@ -119,7 +123,7 @@
               <% } %>
               <% if (daftarSpbys.notaDinas) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[notaDinas]" type="checkbox" value="<%=daftarSpbys.notaDinas%>" id="<%=daftarSpbys.notaDinas%>" <%= inputedGup.checked.notaDinas !== 'kosong' ? "checked": "" %> >
+                  <input class="form-check-input" name="gup[notaDinas]" type="checkbox" value="<%=daftarSpbys.notaDinas%>" id="<%=daftarSpbys.notaDinas%>" <%= inputedGup.checked.notaDinas !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.notaDinas%>" >
                     <%=daftarSpbys.notaDinas%>
                   </label>
@@ -127,7 +131,7 @@
               <% } %>
               <% if (daftarSpbys.suratTugas) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[suratTugas]" type="checkbox" value="<%=daftarSpbys.suratTugas%>" id="<%=daftarSpbys.suratTugas%>" <%= inputedGup.checked.suratTugas %> >
+                  <input class="form-check-input" name="gup[suratTugas]" type="checkbox" value="<%=daftarSpbys.suratTugas%>" id="<%=daftarSpbys.suratTugas%>" <%= inputedGup.checked.suratTugas !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.suratTugas%>" >
                     <%=daftarSpbys.suratTugas%>
                   </label>
@@ -135,7 +139,7 @@
               <% } %>
               <% if (daftarSpbys.kesesuaianSBM) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[kesesuaianSBM]" type="checkbox" value="<%=daftarSpbys.kesesuaianSBM%>" id="<%=daftarSpbys.kesesuaianSBM%>" <%= inputedGup.checked.kesesuaianSBM !== 'kosong' ? "checked": "" %> >
+                  <input class="form-check-input" name="gup[kesesuaianSBM]" type="checkbox" value="<%=daftarSpbys.kesesuaianSBM%>" id="<%=daftarSpbys.kesesuaianSBM%>" <%= inputedGup.checked.kesesuaianSBM !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.kesesuaianSBM%>" >
                     <%=daftarSpbys.kesesuaianSBM%>
                   </label>
@@ -143,7 +147,7 @@
               <% } %>
               <% if (daftarSpbys.buktiPembayaranKKP) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[buktiPembayaranKKP]" type="checkbox" value="<%=daftarSpbys.buktiPembayaranKKP%>" id="<%=daftarSpbys.buktiPembayaranKKP%>" <%= inputedGup.checked.buktiPembayaranKKP !== 'kosong' ? "checked": "" %> >
+                  <input class="form-check-input" name="gup[buktiPembayaranKKP]" type="checkbox" value="<%=daftarSpbys.buktiPembayaranKKP%>" id="<%=daftarSpbys.buktiPembayaranKKP%>" <%= inputedGup.checked.buktiPembayaranKKP !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.buktiPembayaranKKP%>" >
                     <%=daftarSpbys.buktiPembayaranKKP%>
                   </label>
@@ -151,7 +155,7 @@
               <% } %>
               <% if (daftarSpbys.absensi) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[absensi]" type="checkbox" value="<%=daftarSpbys.absensi%>" id="<%=daftarSpbys.absensi%>" <%= inputedGup.checked.absensi !== 'kosong' ? "checked": "" %> >
+                  <input class="form-check-input" name="gup[absensi]" type="checkbox" value="<%=daftarSpbys.absensi%>" id="<%=daftarSpbys.absensi%>" <%= inputedGup.checked.absensi !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.absensi%>" >
                     <%=daftarSpbys.absensi%>
                   </label>
@@ -159,7 +163,7 @@
               <% } %>
               <% if (daftarSpbys.spj) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[spj]" type="checkbox" value="<%=daftarSpbys.spj%>" id="<%=daftarSpbys.spj%>" <%= inputedGup.checked.spj !== 'kosong' ? "checked": "" %> >
+                  <input class="form-check-input" name="gup[spj]" type="checkbox" value="<%=daftarSpbys.spj%>" id="<%=daftarSpbys.spj%>" <%= inputedGup.checked.spj !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.spj%>" >
                     <%=daftarSpbys.spj%>
                   </label>
@@ -167,7 +171,7 @@
               <% } %>
               <% if (daftarSpbys.rincianTransport) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[rincianTransport]" type="checkbox" value="<%=daftarSpbys.rincianTransport%>" id="<%=daftarSpbys.rincianTransport%>" <%= inputedGup.checked.rincianTransport !== 'kosong' ? "checked": "" %> >
+                  <input class="form-check-input" name="gup[rincianTransport]" type="checkbox" value="<%=daftarSpbys.rincianTransport%>" id="<%=daftarSpbys.rincianTransport%>" <%= inputedGup.checked.rincianTransport !== 'kosong' ? "checked" : "" %> >
                   <label class="form-check-label" for="<%=daftarSpbys.rincianTransport%>" >
                     <%=daftarSpbys.rincianTransport%>
                   </label>

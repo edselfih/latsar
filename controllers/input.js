@@ -92,9 +92,15 @@ module.exports.checkedGupInputed = async (req, res) => {
   delete jenisSpby.__v
 
   for (let x in jenisSpby ) {
-    if(daftarSpby[x] === 'kosong') {
+    if(daftarSpby[x]=== 'kosong' ) {
       await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
+      return res.redirect("/monitoring")
     }
+    if(daftarSpby.lainlain.length !== jenisSpby.lainlain.length){
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
+      return res.redirect("/monitoring")
+    }
+    await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Lengkap'})
   }
   res.redirect('/monitoring')
 };
@@ -114,7 +120,7 @@ module.exports.updateGupInputed = async (req, res) => {
   const {id} = req.params
   const updatedChecked = req.body.gup
   updatedChecked.jumlahSpby = updatedChecked.jumlahSpby.replaceAll('.', '')
-  console.log(updatedChecked.jumlahSpby)
+  console.log(updatedChecked)
   const daftarSpby = new DaftarSpbyInputed(updatedChecked)
   daftarSpby.save()
   const inputedGups = await InputGup.findById(id)

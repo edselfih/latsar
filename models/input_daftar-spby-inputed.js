@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 
 const daftarSPByInputSchema = new Schema ({
     jumlahSpby: Number,
+    nomorkwitansi: String,
     ttdPPK: {
         type: String,
         default: 'kosong'

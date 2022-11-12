@@ -17,6 +17,7 @@ const daftarSPBySchema = new Schema ({
     absensi: String,
     spj: String,
     rincianTransport: String,
+    nomorkwitansi: String,
     pajak: {
         duaSatu: String,
         duaDua: String,
