@@ -9,6 +9,11 @@
                 <tr>
                   <th scope="col">No</th>
                   <th scope="col">No Spby</th>
+                  <th scope="col">No ND</th>
+                  <th scope="col">No ST</th>
+                  <th scope="col">No Kw</th>
+                  <th scope="col">Uraian</th>
+                  <th scope="col">PPK</th>
                   <th scope="col">Status</th>
                   <th scope="col">Detail</th>
                   <th scope="col">Update</th>
@@ -23,6 +28,11 @@
                     <tr>
                         <th scope="row"><%= nomor %></th>
                         <td><%= inputedGup.nomorSpby %></td>
+                        <td><%= inputedGup.nomorNd %></td>
+                        <td><%= inputedGup.nomorSt %></td>
+                        <td><%= inputedGup.checked.nomorkwitansi %></td>
+                        <td><%= inputedGup.uraian %></td>
+                        <td><%= inputedGup.ppk %></td>
                         <td><%= inputedGup.kelengkapan %></td>
                         <td><a class="btn btn-warning" href='/monitoring/<%=inputedGup._id%>' role="button">Lihat</a></td>
                         <td><a class="btn btn-success" href='/input/gup-tunai/update/<%=inputedGup._id%>' role="button">Update</a></td>

@@ -2,8 +2,9 @@ const InputGup = require("../models/input-gup.js");
 const DaftarSpby = require("../models/input_daftar-spby.js");
 
 module.exports.index = async (req, res) => {
-  const inputedGups = await InputGup.find({});
-  res.render("./monitoring/index", { inputedGups });
+  const inputedGups = await InputGup.find({}).populate("checked");
+  checked = inputedGups.checked
+  res.render("./monitoring/index", { inputedGups, checked });
 };
 
 module.exports.detailSpby = async (req, res) => {
@@ -16,7 +17,6 @@ module.exports.detailSpby = async (req, res) => {
   const jumlahKwitansi = checked.jumlahSpby
   const jenisSpby = jenisSpbys.toObject()
   const lainlain = jenisSpby.lainlain 
-  console.log(lainlain)
   delete jenisSpby._id
   delete jenisSpby.jenis
   delete jenisSpby.jenisSPBy

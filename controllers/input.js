@@ -32,7 +32,6 @@ module.exports.deleteDaftarPpk = async (req, res) => {
 module.exports.jenisSpby = async (req, res) => {
   const jenisSpbys= await DaftarSpby.find({}).populate('lainlain')
   const lainlain = await Lainlain.find({})
-  console.log(lainlain)
   res.render("./input/jenis-spby", {jenisSpbys, lainlain});
 };
 
@@ -59,7 +58,6 @@ module.exports.gup = async (req, res) => {
 
 module.exports.createGup = async (req, res) => {
   const jumlah = req.body.gupTunai.jumlahSpby
-  console.log(`ini jumlah ${jumlah}`)
   const newGup = new InputGup(req.body.gupTunai)
   newGup.jumlahSpby = jumlah.replaceAll('.', '')
   newGup.save()
@@ -93,14 +91,14 @@ module.exports.checkedGupInputed = async (req, res) => {
 
   for (let x in jenisSpby ) {
     if(daftarSpby[x]=== 'kosong' ) {
-      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})
       return res.redirect("/monitoring")
     }
     if(daftarSpby.lainlain.length !== jenisSpby.lainlain.length){
-      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})
       return res.redirect("/monitoring")
     }
-    await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Lengkap'})
+    await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Lengkap dan Sesuai'})
   }
   res.redirect('/monitoring')
 };
@@ -120,7 +118,6 @@ module.exports.updateGupInputed = async (req, res) => {
   const {id} = req.params
   const updatedChecked = req.body.gup
   updatedChecked.jumlahSpby = updatedChecked.jumlahSpby.replaceAll('.', '')
-  console.log(updatedChecked)
   const daftarSpby = new DaftarSpbyInputed(updatedChecked)
   daftarSpby.save()
   const inputedGups = await InputGup.findById(id)
@@ -138,15 +135,36 @@ module.exports.updateGupInputed = async (req, res) => {
   delete jenisSpby.__v
   for (let x in jenisSpby ) {
     
+
     if(daftarSpby[x]=== 'kosong' ) {
+      if(daftarSpby.jumlahSpby !== inputedGups.jumlahSpby){
+        await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})
+        return res.redirect("/monitoring")
+      }
       await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
       return res.redirect("/monitoring")
     }
     if(daftarSpby.lainlain.length !== jenisSpby.lainlain.length){
+      if(daftarSpby.jumlahSpby !== inputedGups.jumlahSpby){
+        await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})
+        return res.redirect("/monitoring")
+      }
       await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
       return res.redirect("/monitoring")
     }
-    await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Lengkap'})
+    if(daftarSpby.jumlahSpby !== inputedGups.jumlahSpby){
+      if(daftarSpby[x]=== 'kosong' ) {
+        await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan sesuai'})
+        return res.redirect("/monitoring")
+      }
+      if(daftarSpby.lainlain.length !== jenisSpby.lainlain.length) {
+        await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan sesuai'})
+        return res.redirect("/monitoring")
+      }
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Sesuai'})
+      return res.redirect("/monitoring")
+    }
+    await InputGup.findByIdAndUpdate(id, {kelengkapan :  'Lengkap dan Sesuai'})
   }
   res.redirect("/monitoring")
 };
