@@ -30,7 +30,11 @@
                         <td><%= inputedGup.nomorSpby %></td>
                         <td><%= inputedGup.nomorNd %></td>
                         <td><%= inputedGup.nomorSt %></td>
-                        <td><%= inputedGup.checked.nomorkwitansi %></td>
+                        <% if (inputedGup.checked) { %>
+                          <td><%= inputedGup.checked.nomorkwitansi %></td>
+                        <% } else {%>
+                          <td></td>
+                        <% } %>  
                         <td><%= inputedGup.uraian %></td>
                         <td><%= inputedGup.ppk %></td>
                         <td><%= inputedGup.kelengkapan %></td>
