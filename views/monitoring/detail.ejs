@@ -59,7 +59,7 @@
                 <tr>
                   <th ><%= lainlain[i].desc %></th>
                   <th>
-                    <% for (let a = 0 ; a < checked.lainlain.length ; a++ ) { console.log(`ini yg ada: ${checked.lainlain[a]}, ini yang seharusnya ada: ${lainlain[i].desc}, kesimpulan:${checked.lainlain[a] == lainlain[i].desc} `)%> 
+                    <% for (let a = 0 ; a < checked.lainlain.length ; a++ ) { %> 
                       <% if (checked.lainlain[a] == lainlain[i].desc) { %>
                         <% status = status + 1 %>
 

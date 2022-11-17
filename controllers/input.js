@@ -48,7 +48,7 @@ module.exports.createJenisSpbyLainlain = async (req, res) => {
   res.redirect('/input/jenis-spby');
 };
 
-// GUP Tunai:
+// Verifikasi:
 
 module.exports.gup = async (req, res) => {
   const jenisSpbys= await DaftarSpby.find({}).populate('lainlain')
@@ -91,14 +91,34 @@ module.exports.checkedGupInputed = async (req, res) => {
 
   for (let x in jenisSpby ) {
     if(daftarSpby[x]=== 'kosong' ) {
-      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})
+      if(daftarSpby.jumlahSpby !== inputedGups.jumlahSpby){
+        await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})
+        return res.redirect("/monitoring")
+      }
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
       return res.redirect("/monitoring")
     }
     if(daftarSpby.lainlain.length !== jenisSpby.lainlain.length){
-      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})
+      if(daftarSpby.jumlahSpby !== inputedGups.jumlahSpby){
+        await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})
+        return res.redirect("/monitoring")
+      }
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap'})
       return res.redirect("/monitoring")
     }
-    await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Lengkap dan Sesuai'})
+    if(daftarSpby.jumlahSpby !== inputedGups.jumlahSpby){
+      if(daftarSpby[x]=== 'kosong' ) {
+        await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan sesuai'})
+        return res.redirect("/monitoring")
+      }
+      if(daftarSpby.lainlain.length !== jenisSpby.lainlain.length) {
+        await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan sesuai'})
+        return res.redirect("/monitoring")
+      }
+      await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Sesuai'})
+      return res.redirect("/monitoring")
+    }
+    await InputGup.findByIdAndUpdate(id, {kelengkapan :  'Lengkap dan Sesuai'})
   }
   res.redirect('/monitoring')
 };
@@ -135,7 +155,6 @@ module.exports.updateGupInputed = async (req, res) => {
   delete jenisSpby.__v
   for (let x in jenisSpby ) {
     
-
     if(daftarSpby[x]=== 'kosong' ) {
       if(daftarSpby.jumlahSpby !== inputedGups.jumlahSpby){
         await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})

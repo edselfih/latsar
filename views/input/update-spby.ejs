@@ -5,7 +5,7 @@
       <div class="row justify-content-center pb-6">
         <div class="card" style="width: auto">
           <div class="card-body">
-            <h4 class="card-title text-center">SPBy Tunai</h4>
+            <h4 class="card-title text-center">Surat Perintah Bayar</h4>
           </div>
           <hr class="mb-3 mt-0" />
  
@@ -58,7 +58,7 @@
       <!-- panel 2 -->
       <div class="card" style="width: auto; height: auto;">
         <div class="card-body">
-          <h4 class="card-title text-center">Pilih Jenis SPBy</h4>
+          <h4 class="card-title text-center">Surat Perintah Bayar</h4>
           <hr class="mb-3 mt-4" />
           <form action="/input/gup-tunai/update/<%= inputedGup._id %>?_method=PUT" method="POST">
             <label for="rupiah jumlah" class="form-label">Input Kwitansi</label>
@@ -208,11 +208,11 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaSatu]">
+                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaSatu]" value="<%=inputedGup.checked.duaSatu%>">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
-                      <input type="text" class="form-control" name="gup[kjsDuaSatu]" id="exampleFormControlInput1">
+                      <input type="text" class="form-control" name="gup[kjsDuaSatu]" id="exampleFormControlInput1" value="<%=inputedGup.checked.kjsDuaSatu%>">
                     </div>
                   </div>
                 </div>
@@ -231,11 +231,11 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaDua]">
+                      <input type="text" class="form-control rupiah" id="jumlah" value="<%=inputedGup.checked.duaDua%>" aria-describedby="basic-addon1" name="gup[duaDua]">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
-                      <input type="text" class="form-control " name="gup[kjsDuaDua]" id="exampleFormControlInput1">
+                      <input type="text" class="form-control " name="gup[kjsDuaDua]" id="exampleFormControlInput1" value="<%=inputedGup.checked.kjsDuaDua%>">
                     </div>
                   </div>
                 </div>
@@ -254,11 +254,11 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[duaTiga]">
+                      <input type="text" class="form-control rupiah" id="jumlah" value="<%=inputedGup.checked.duaTiga%>" aria-describedby="basic-addon1" name="gup[duaTiga]">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
-                      <input type="text" class="form-control" name="gup[kjsDuaTiga]" id="exampleFormControlInput1">
+                      <input type="text" class="form-control" name="gup[kjsDuaTiga]" id="exampleFormControlInput1" value="<%=inputedGup.checked.kjsDuaTiga%>">
                     </div>
                   </div>
                 </div>
@@ -277,11 +277,11 @@
                     <label for="jumlah" class="form-label">Jumlah Pajak</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
-                      <input type="text" class="form-control rupiah" id="jumlah" placeholder="0" aria-describedby="basic-addon1" name="gup[ppn]">
+                      <input type="text" class="form-control rupiah" id="jumlah" value="<%=inputedGup.checked.ppn%>" aria-describedby="basic-addon1" name="gup[ppn]">
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlInput1" class="form-label">Jenis Setoran</label>
-                      <input type="text" class="form-control" name="gup[kjsPnn]" id="exampleFormControlInput1">
+                      <input type="text" class="form-control" name="gup[kjsPnn]" id="exampleFormControlInput1" value="<%=inputedGup.checked.ppn%>">
                     </div>
                   </div>
                 </div>
@@ -313,11 +313,11 @@
 
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">NPWP</label>
-              <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="00.123.875.7-074.000" name="gup[npwp]">
+              <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="00.123.875.7-074.000" name="gup[npwp]" value="<%=inputedGup.checked.npwp%>">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Nama Rekanan</label>
-              <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="PT. Ines" name="gup[rekanan]">
+              <input type="Text" class="form-control" id="exampleFormControlInput1" placeholder="PT. Ines" name="gup[rekanan]" value="<%=inputedGup.checked.rekanan%>">
             </div>
             <div class="d-flex justify-content-end mb-3 mt-3">
               <button type="submit" class="btn btn-success">Submit</button>
