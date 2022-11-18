@@ -1,10 +1,12 @@
 const InputGup = require("../models/input-gup.js");
 const DaftarSpby = require("../models/input_daftar-spby.js");
+const DaftarPpk = require("../models/input_daftar-ppk")
 
 module.exports.index = async (req, res) => {
   const inputedGups = await InputGup.find({}).populate("checked");
+  const daftarPpk = await DaftarPpk.find({})
   checked = inputedGups.checked
-  res.render("./monitoring/index", { inputedGups, checked });
+  res.render("./monitoring/index", { inputedGups, checked, daftarPpk });
 };
 
 module.exports.detailSpby = async (req, res) => {

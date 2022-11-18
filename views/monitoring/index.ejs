@@ -1,59 +1,86 @@
 <% layout('layout/template.ejs') %>
+
 <h1 class="text-center mb-3" style="color: white" >Monitoring Spby</h1>
+
+<!-- <div class="d-flex justify-content-center">
+  <div class="card mb-3 " style="width: 40rem;">
+    <form action="/monitoring" method="GET">
+      <div class="d-flex bd-highlight">
+        <div class="p-2 flex-grow-1 flex-fill bd-highlight">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Filter Berdasarkan</option>
+            <option value="daftarPpk">PPK</option>
+          </select>
+      </div>
+        <div class="p-2 flex-grow-1 flex-fill bd-highlight">
+            <select class="form-select" aria-label="Default select example" name="filter">
+              <option selected disabled value="">Pilih Data</option>
+              <% for (data of daftarPpk) { %>
+                <option  value="<%= data.namaPpk %>"><%= data.namaPpk %> </option>
+              <% } %>  
+            </select>
+        </div>
+        <div class="p-2 flex-fill bd-highlight" style="display: flex ; justify-content: center;">
+          <button type="submit" class="btn btn-warning d-flex justify-content-center" style="width: 100%;">Filter</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+
 <div class="card text-center">
-
-  <div style="overflow:scroll; height:520px;" >
     <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">No Spby</th>
-                  <th scope="col">No ND</th>
-                  <th scope="col">No ST</th>
-                  <th scope="col">No Kw</th>
-                  <th scope="col">Jenis SPBy</th>
-                  <th scope="col">PPK</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Detail</th>
-                  <th scope="col">Update</th>
-                  <th scope="col">Delete</th>
-                </tr>
-              </thead>
-              <tbody>
+      <div class="tableFixHead">
+        <table>
+          <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">No Spby</th>
+                <th scope="col">No ND</th>
+                <th scope="col">No ST</th>
+                <th scope="col">No Kw</th>
+                <th scope="col">Jenis SPBy</th>
+                <th scope="col">PPK</th>
+                <th scope="col">Status</th>
+                <th scope="col">Detail</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
                 <% let nomor = 0 %> 
-                
-                  <%for (inputedGup of inputedGups) {%>
-                    <% nomor = nomor + 1 %>
-                    <tr>
-                        <th scope="row"><%= nomor %></th>
-                        <td><%= inputedGup.nomorSpby %></td>
-                        <td><%= inputedGup.nomorNd %></td>
-                        <td><%= inputedGup.nomorSt %></td>
-                        <% if (inputedGup.checked) { %>
-                          <td><%= inputedGup.checked.nomorkwitansi %></td>
-                        <% } else {%>
-                          <td></td>
-                        <% } %>  
-                        <td><%= inputedGup.jenisSpby %></td>
-                        <td><%= inputedGup.ppk %></td>
-                        <td><%= inputedGup.kelengkapan %></td>
-                        <td><a class="btn btn-warning" href='/monitoring/<%=inputedGup._id%>' role="button">Lihat</a></td>
-                        <td><a class="btn btn-success" href='/input/gup-tunai/update/<%=inputedGup._id%>' role="button">Update</a></td>
-                        <td>
-                          <form action="/input/gup-tunai/<%=inputedGup._id%>?_method=delete" method="POST">
-                            <button class="btn btn-danger" >Delete</button>
-                          </form>
-                        </td>
-                    </tr>
-                <% } %> 
+              
+                <%for (inputedGup of inputedGups) {%>
+                  <% nomor = nomor + 1 %>
+                  <tr>
+                      <th scope="row"><%= nomor %></th>
+                      <td><%= inputedGup.nomorSpby %></td>
+                      <td><%= inputedGup.nomorNd %></td>
+                      <td><%= inputedGup.nomorSt %></td>
+                      <% if (inputedGup.checked) { %>
+                        <td><%= inputedGup.checked.nomorkwitansi %></td>
+                      <% } else {%>
+                        <td></td>
+                      <% } %>  
+                      <td><%= inputedGup.jenisSpby %></td>
+                      <td><%= inputedGup.ppk %></td>
+                      <td><%= inputedGup.kelengkapan %></td>
+                      <td><a class="btn btn-warning" href='/monitoring/<%=inputedGup._id%>' role="button">Lihat</a></td>
+                      <td><a class="btn btn-success" href='/input/gup-tunai/update/<%=inputedGup._id%>' role="button">Update</a></td>
+                      <td>
+                        <form action="/input/gup-tunai/<%=inputedGup._id%>?_method=delete" method="POST">
+                          <button class="btn btn-danger" >Delete</button>
+                        </form>
+                      </td>
+                  </tr>
+              <% } %> 
+            </tbody>
+      </table>
+      </div>
 
-        
-              </tbody>
-        </table>
     </div>
-  </div>
-  </div>
+</div>
 
 <a href="/input/gup-tunai" class="mt-3 btn btn-light" role="button" >Input SPBy</a>
 
