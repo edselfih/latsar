@@ -23,7 +23,16 @@
               </div>
               <% for (data of daftarPpk) { %>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="valueFilter[daftarPpk]" value="<%= data.namaPpk %>" id="flexCheckDefault" <%= session.filterCheck.ppk.includes(data.namaPpk) ? "checked" : "" %>>
+                  <input 
+                  class="form-check-input" 
+                  type="checkbox" 
+                  name="valueFilter[daftarPpk]" 
+                  value="<%= data.namaPpk %>" 
+                  id="flexCheckDefault"
+                  <% if (session.filterCheck) { %> 
+                    <%= session.filterCheck.ppk.includes(data.namaPpk) ? "checked" : "" %>
+                  <% } %> 
+                >
                   <label class="form-check-label" for="flexCheckDefault">
                     <%= data.namaPpk %>
                   </label>
@@ -51,25 +60,41 @@
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Lengkap dan Sesuai" id="flexCheckDefault" <%= session.filterCheck.kelengkapan.includes('Lengkap dan Sesuai') ? "checked" : "" %>>
+                <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Lengkap dan Sesuai" id="flexCheckDefault" 
+                <% if (session.filterCheck) { %> 
+                  <%= session.filterCheck.kelengkapan.includes('Lengkap dan Sesuai') ? "checked" : "" %>
+                <% } %> 
+                >
                 <label class="form-check-label" for="flexCheckDefault">
                   Lengkap dan Sesuai
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Lengkap" id="flexCheckDefault" <%= session.filterCheck.kelengkapan.includes('Belum Lengkap') ? "checked" : "" %>>
+                <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Lengkap" id="flexCheckDefault" 
+                <% if (session.filterCheck) { %> 
+                  <%= session.filterCheck.kelengkapan.includes('Belum Lengkap') ? "checked" : "" %>
+                <% } %> 
+                >
                 <label class="form-check-label" for="flexCheckDefault">
                   Belum Lengkap
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Sesuai" id="flexCheckDefault" <%= session.filterCheck.kelengkapan.includes('Belum Sesuai') ? "checked" : "" %>>
+                <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Sesuai" id="flexCheckDefault" 
+                <% if (session.filterCheck) { %> 
+                  <%= session.filterCheck.kelengkapan.includes('Belum Sesuai') ? "checked" : "" %>
+                <% } %> 
+                >
                 <label class="form-check-label" for="flexCheckDefault">
                   Belum Sesuai
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Lengkap dan Sesuai" id="flexCheckDefault" <%= session.filterCheck.kelengkapan.includes('Belum Lengkap dan Sesuai') ? "checked" : "" %>>
+                <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Lengkap dan Sesuai" id="flexCheckDefault" 
+                <% if (session.filterCheck) { %> 
+                  <%= session.filterCheck.kelengkapan.includes('Belum Lengkap dan Sesuai') ? "checked" : "" %>
+                <% } %>                 
+                >
                 <label class="form-check-label" for="flexCheckDefault">
                   Belum Lengkap dan Sesuai
                 </label>
