@@ -56,7 +56,6 @@ module.exports.indexFilter = async (req, res) => {
   }
   const session = req.session
   session.filterCheck = {ppk, kelengkapan}
-  console.log(`ini session ${session.filterCheck}`)
   checked = inputedGups.checked
   // const util = require('util') 
   // console.log(util.inspect(session, false, null, true))
