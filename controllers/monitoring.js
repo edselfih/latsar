@@ -1,7 +1,6 @@
 const InputGup = require("../models/input-gup.js");
 const DaftarSpby = require("../models/input_daftar-spby.js");
 const DaftarPpk = require("../models/input_daftar-ppk");
-const { collection } = require("../models/input-gup.js");
 
 module.exports.index = async (req, res) => {
   const filter = req.query.filter
@@ -11,27 +10,28 @@ module.exports.index = async (req, res) => {
   res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});
 };
 
-module.exports.indexFilterPpk = async (req, res) => {
+module.exports.indexFilter = async (req, res) => {
   const filter = req.query.filter
-  const valueFilter = req.body.valueFilter
-  const inputedGups = await InputGup.find({ppk: valueFilter }).populate("checked");
+  const ppk = req.body.valueFilter.daftarPpk
+  const kelengkapan = req.body.valueFilter.kelengkapan
+  let inputedGups = ''
+  if (ppk) {
+    inputedGups = await InputGup.find({ppk}).populate("checked");
+  }
+  if (kelengkapan) {
+    inputedGups = await InputGup.find({kelengkapan}).populate("checked");
+  }
+  if (kelengkapan && ppk) {
+    inputedGups = await InputGup.find({kelengkapan, ppk}).populate("checked");
+  }
   const daftarPpk = await DaftarPpk.find({})
   checked = inputedGups.checked
   res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});
 };
-module.exports.indexFilterKelengkan = async (req, res) => {
+module.exports.indexSearch= async (req, res) => {
   const filter = req.query.filter
-  const valueFilter = req.body.valueFilter
-  const inputedGups = await InputGup.find({kelengkapan: valueFilter }).populate("checked");
-  const daftarPpk = await DaftarPpk.find({})
-  checked = inputedGups.checked
-  res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});
-};
-module.exports.indexFilterNomorSpby = async (req, res) => {
-  const filter = req.query.filter
-  console.log(filter)
-  const valueFilter = req.body.valueFilter
-  const inputedGups = await InputGup.find({nomorSpby: valueFilter }).populate("checked");
+  const nomorSpby = req.body.valueFilter.nomorSpby
+  const inputedGups = await InputGup.find({nomorSpby}).populate("checked");
   const daftarPpk = await DaftarPpk.find({})
   checked = inputedGups.checked
   res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});

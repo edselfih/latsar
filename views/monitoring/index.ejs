@@ -2,119 +2,75 @@
 
 <h1 class="text-center mb-3" style="color: white">Monitoring Spby</h1>
 
-  <div class="d-flex justify-content-center">
-    <% if (!filter) { %>
-      <div class="card mb-3" style="width: 28rem">
-    <% } %>
-    <% if (filter) { %>
-      <div class="card mb-3" style="width: 40rem">
-    <% } %>    
-      <div class="d-flex bd-highlight">
-        <form action="/monitoring" method="GET" class="p-2 flex-grow-1 flex-fill bd-highlight">
-          <select class="form-select" name="filter" onchange='if(this.value != 0) { this.form.submit(); console.log("berubah")}'>
-            <option value="0" <%= '0' === filter ? "selected" : "" %>>Filter Berdasarkan</option>
-            <option value="daftarPpk" <%= 'daftarPpk' === filter ? "selected" : "" %>>PPK</option>
-            <option value="kelengkapan" <%= 'kelengkapan' === filter ? "selected" : "" %>>Status</option>
-            <option value="nomorSpby" <%= 'nomorSpby' === filter ? "selected" : "" %>>Nomor SPBy</option>
-          </select>
-        </form>
-        <% if ( filter === "nomorSpby") { %>
-          <form action="/monitoring/filterNomorSpby" method="POST" class="d-flex bd-highlight">
-            <div class="p-2 flex-grow-1 flex-fill bd-highlight">
-              <input type="number" name="valueFilter" class="form-control" id="floatingInput" placeholder="Nomor SPBy">
-            </div>
-            <div
-              class="p-2 flex-fill bd-highlight"
-              style="display: flex; justify-content: center"
-            >
-              <button
-                type="submit"
-                class="btn btn-warning d-flex justify-content-center"
-                style="width: 100%"
-              >
-                Filter
-              </button>
-            </div>
 
-          </form>
-        <% } %>
+<div class="d-flex justify-content-center">
 
-        <% if ( filter === "daftarPpk" ) { %>
-          <form action="/monitoring/filterPpk" method="POST" class="d-flex bd-highlight">
-            <div class="p-2 flex-grow-1 flex-fill bd-highlight">
-              <select
-                class="form-select"
-                name="valueFilter"
-              >
-                <option selected disabled value="">Pilih Data</option>
-                <% if ( filter === "daftarPpk" ) { %>
-                  <% for (data of daftarPpk) { %>
-                    <option value="<%= data.namaPpk %>"><%= data.namaPpk %></option>
-                    <% } %>
-                <% } %> 
-                <% if ( filter === "kelengkapan") { %>
-                    <option value="Lengkap dan Sesuai">Lengkap dan Sesuai</option>
-                    <option value="Belum Lengkap">Belum Lengkap</option>
-                    <option value="Belum Sesuai">Belum Sesuai</option>
-                    <option value="Belum Lengkap dan Sesuai">Belum Lengkap dan Sesuai</option>
-                <% } %> 
-  
-              </select>
-            </div>
-            <div
-              class="p-2 flex-fill bd-highlight"
-              style="display: flex; justify-content: center"
-            >
-              <button
-                type="submit"
-                class="btn btn-warning d-flex justify-content-center"
-                style="width: 100%"
-              >
-                Filter
-              </button>
-            </div>
-          </form>
-        <% } %> 
-
-        <% if ( filter === "kelengkapan") { %>
-          <form action="/monitoring/filterKelengkapan" method="POST" class="d-flex bd-highlight">
-            <div class="p-2 flex-grow-1 flex-fill bd-highlight">
-              <select
-                class="form-select"
-                name="valueFilter"
-              >
-                <option selected disabled value="">Pilih Data</option>
-                <% if ( filter === "daftarPpk" ) { %>
-                  <% for (data of daftarPpk) { %>
-                    <option value="<%= data.namaPpk %>"><%= data.namaPpk %></option>
-                    <% } %>
-                <% } %> 
-                <% if ( filter === "kelengkapan") { %>
-                    <option value="Lengkap dan Sesuai">Lengkap dan Sesuai</option>
-                    <option value="Belum Lengkap">Belum Lengkap</option>
-                    <option value="Belum Sesuai">Belum Sesuai</option>
-                    <option value="Belum Lengkap dan Sesuai">Belum Lengkap dan Sesuai</option>
-                <% } %> 
-  
-              </select>
-            </div>
-            <div
-              class="p-2 flex-fill bd-highlight"
-              style="display: flex; justify-content: center"
-            >
-              <button
-                type="submit"
-                class="btn btn-warning d-flex justify-content-center"
-                style="width: 100%"
-              >
-                Filter
-              </button>
-            </div>
-          </form>
-        <% } %>
+  <!-- filter -->
+  <div class="card mb-3">
+    <form action="/monitoring/filter" method="POST" class="d-flex bd-highlight">
+      <div class="p-2 flex-grow-1 flex-fill bd-highlight">
+        <select
+          class="form-select"
+          name="valueFilter[daftarPpk]"
+        >
+          <option selected value="">Filter By PPK</option>
+          <% for (data of daftarPpk) { %>
+            <option value="<%= data.namaPpk %>"><%= data.namaPpk %></option>
+          <% } %>  
+        </select>
       </div>
-    </div>
+      <div class="p-2 flex-grow-1 flex-fill bd-highlight">
+        <select name="valueFilter[kelengkapan]" id="" class="form-select">
+          <option value="">Filter By Status</option>
+          <option value="Lengkap dan Sesuai">Lengkap dan Sesuai</option>
+          <option value="Belum Lengkap">Belum Lengkap</option>
+          <option value="Belum Sesuai">Belum Sesuai</option>
+          <option value="Belum Lengkap dan Sesuai">Belum Lengkap dan Sesuai</option>
+      </select>
+      </div>
+      <div
+        class="p-2 flex-fill bd-highlight"
+        style="display: flex; justify-content: center"
+      >
+        <button
+          type="submit"
+          class="btn btn-warning d-flex justify-content-center"
+          style="width: 100%"
+        >
+          Filter
+        </button>
+      </div>
+    </form>
   </div>
+
+
+  <!-- search -->
+  <div class="card mb-3" style="margin-left: 2em ;">
+    <form action="/monitoring/search" method="POST" class="d-flex bd-highlight">
+      <div class="p-2 flex-grow-1 flex-fill bd-highlight">
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon3">Nomor SPBy</span>
+          <input type="number" name="valueFilter[nomorSpby]" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+      </div>
+      <div
+        class="p-2 flex-fill bd-highlight"
+        style="display: flex; justify-content: center"
+      >
+        <button
+          type="submit"
+          class="btn btn-warning d-flex justify-content-center"
+          style="width: 100%"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- view monitoring -->
 
 <div class="card text-center">
   <div class="card-body">

@@ -6,14 +6,11 @@ const monitoringController = require('../controllers/monitoring');
 router.route('/')
     .get( monitoringController.index)
 
-router.route('/filterPpk')
-    .post( monitoringController.indexFilterPpk)
+router.route('/filter')
+    .post( monitoringController.indexFilter)
 
-router.route('/filterKelengkapan')
-    .post( monitoringController.indexFilterKelengkan)
-
-router.route('/filterNomorSpby')
-    .post( monitoringController.indexFilterNomorSpby)
+router.route('/search')
+    .post( monitoringController.indexSearch)
 
 router.route('/:id')
     .get( monitoringController.detailSpby);
