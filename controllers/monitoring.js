@@ -1,12 +1,40 @@
 const InputGup = require("../models/input-gup.js");
 const DaftarSpby = require("../models/input_daftar-spby.js");
-const DaftarPpk = require("../models/input_daftar-ppk")
+const DaftarPpk = require("../models/input_daftar-ppk");
+const { collection } = require("../models/input-gup.js");
 
 module.exports.index = async (req, res) => {
-  const inputedGups = await InputGup.find({}).populate("checked");
+  const filter = req.query.filter
+  let inputedGups = await InputGup.find({}).populate("checked");
   const daftarPpk = await DaftarPpk.find({})
   checked = inputedGups.checked
-  res.render("./monitoring/index", { inputedGups, checked, daftarPpk });
+  res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});
+};
+
+module.exports.indexFilterPpk = async (req, res) => {
+  const filter = req.query.filter
+  const valueFilter = req.body.valueFilter
+  const inputedGups = await InputGup.find({ppk: valueFilter }).populate("checked");
+  const daftarPpk = await DaftarPpk.find({})
+  checked = inputedGups.checked
+  res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});
+};
+module.exports.indexFilterKelengkan = async (req, res) => {
+  const filter = req.query.filter
+  const valueFilter = req.body.valueFilter
+  const inputedGups = await InputGup.find({kelengkapan: valueFilter }).populate("checked");
+  const daftarPpk = await DaftarPpk.find({})
+  checked = inputedGups.checked
+  res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});
+};
+module.exports.indexFilterNomorSpby = async (req, res) => {
+  const filter = req.query.filter
+  console.log(filter)
+  const valueFilter = req.body.valueFilter
+  const inputedGups = await InputGup.find({nomorSpby: valueFilter }).populate("checked");
+  const daftarPpk = await DaftarPpk.find({})
+  checked = inputedGups.checked
+  res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});
 };
 
 module.exports.detailSpby = async (req, res) => {

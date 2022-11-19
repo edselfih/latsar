@@ -4,7 +4,16 @@ const router = express.Router();
 const monitoringController = require('../controllers/monitoring');
 
 router.route('/')
-    .get( monitoringController.index);
+    .get( monitoringController.index)
+
+router.route('/filterPpk')
+    .post( monitoringController.indexFilterPpk)
+
+router.route('/filterKelengkapan')
+    .post( monitoringController.indexFilterKelengkan)
+
+router.route('/filterNomorSpby')
+    .post( monitoringController.indexFilterNomorSpby)
 
 router.route('/:id')
     .get( monitoringController.detailSpby);
