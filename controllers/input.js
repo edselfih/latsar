@@ -154,7 +154,6 @@ module.exports.updateGupInputed = async (req, res) => {
   delete jenisSpby.pajak
   delete jenisSpby.__v
   for (let x in jenisSpby ) {
-    
     if(daftarSpby[x]=== 'kosong' ) {
       if(daftarSpby.jumlahSpby !== inputedGups.jumlahSpby){
         await InputGup.findByIdAndUpdate(id, {kelengkapan : 'Belum Lengkap dan Sesuai'})

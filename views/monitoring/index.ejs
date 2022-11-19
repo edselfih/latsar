@@ -15,19 +15,25 @@
           </button>
           <div class="dropdown-menu p-3">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="valueFilter[daftarPpk]" value="" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" name="valueFilter[daftarPpk]" value="all" id="flexCheckDefault" onchange='if(this.value != 0) { this.form.submit(); }' %>>
               <label class="form-check-label" for="flexCheckDefault">
-                No Filter
+                Check All
               </label>
             </div>
             <% for (data of daftarPpk) { %>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="valueFilter[daftarPpk]" value="<%= data.namaPpk %>" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name="valueFilter[daftarPpk]" value="<%= data.namaPpk %>" id="flexCheckDefault" <%= session.filterCheck.ppk.includes(data.namaPpk) ? "checked" : "" %>>
                 <label class="form-check-label" for="flexCheckDefault">
                   <%= data.namaPpk %>
                 </label>
               </div>
             <% } %>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="valueFilter[daftarPpk]" value="none" id="flexCheckDefault" onchange='if(this.value != 0) { this.form.submit(); }' %>>
+              <label class="form-check-label" for="flexCheckDefault">
+                Uncheck All
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -38,33 +44,39 @@
           </button>
           <div class="dropdown-menu p-3">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="all" id="flexCheckDefault" onchange='if(this.value != 0) { this.form.submit(); }' %>>
               <label class="form-check-label" for="flexCheckDefault">
-                No Filter
+                Check All
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Lengkap dan Sesuai" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Lengkap dan Sesuai" id="flexCheckDefault" <%= session.filterCheck.kelengkapan.includes('Lengkap dan Sesuai') ? "checked" : "" %>>
               <label class="form-check-label" for="flexCheckDefault">
                 Lengkap dan Sesuai
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Lengkap" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Lengkap" id="flexCheckDefault" <%= session.filterCheck.kelengkapan.includes('Belum Lengkap') ? "checked" : "" %>>
               <label class="form-check-label" for="flexCheckDefault">
                 Belum Lengkap
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Sesuai" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Sesuai" id="flexCheckDefault" <%= session.filterCheck.kelengkapan.includes('Belum Sesuai') ? "checked" : "" %>>
               <label class="form-check-label" for="flexCheckDefault">
                 Belum Sesuai
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Lengkap dan Sesuai" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="Belum Lengkap dan Sesuai" id="flexCheckDefault" <%= session.filterCheck.kelengkapan.includes('Belum Lengkap dan Sesuai') ? "checked" : "" %>>
               <label class="form-check-label" for="flexCheckDefault">
                 Belum Lengkap dan Sesuai
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="valueFilter[kelengkapan]" value="none" id="flexCheckDefault" onchange='if(this.value != 0) { this.form.submit(); }' %>>
+              <label class="form-check-label" for="flexCheckDefault">
+                Uncheck All
               </label>
             </div>
           </div>

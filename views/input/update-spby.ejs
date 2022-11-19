@@ -99,7 +99,7 @@
               <% } %>
               <% if (daftarSpbys.spd) { %>
                 <div class="mt-3">
-                  <input class="form-check-input" name="gup[spd]" type="checkbox" value="<%=daftarSpbys.spd%>" id="<%=daftarSpbys.spd%>" <%= daftarSpbys.spd !== 'kosong' ? "checked" : "" %> >
+                  <input class="form-check-input" name="gup[spd]" type="checkbox" value="<%=daftarSpbys.spd%>" id="<%=daftarSpbys.spd%>" <%= inputedGup.checked.spd !== 'kosong' ? "checked" : '' %> >
                   <label class="form-check-label" for="<%=daftarSpbys.spd%>" >
                     <%=daftarSpbys.spd%>
                   </label>
