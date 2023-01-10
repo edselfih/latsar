@@ -1,0 +1,123 @@
+<% layout('layout/template.ejs') %>
+<style>
+    table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .main-table th,
+  .main-table td {
+    padding: 2px 4px;
+    border: 1px solid rgb(0, 0, 0);
+  }
+  th {
+    background: rgb(255, 255, 255);
+    font-size: xx-small;
+  }
+</style>
+<body>
+    <form action="/spj" method="POST" id="formSPJ">
+        
+    </form>
+    <div class="container">
+        <div class="text-center mb-3">
+            <h3 style="color: white;"> Daftar Pertanggungjawaban</h1>
+            <button class="btn btn-warning"  form="formSPJ">submit</button>
+        </div>
+    </div>
+    <div class="m-3">
+        <table class="main-table">
+            <thead class="align-middle text-center">
+                <tr>
+                    <th rowspan="2" scope="col">No</th>
+                    <th rowspan="2" scope="col">Nama</th>
+                    <th rowspan="2" scope="col">NIP/NRP</th>
+                    <th rowspan="2" colspan="3" >Tanggal Perjalanan</th>
+                    <th rowspan="2" style="max-width: 70px;" >Lama Perjalanan (hari)</th>
+                    <th colspan="8" >Biaya</th>
+                    <th rowspan="2" scope="col">Tanda Tangan</th>
+                </tr>
+                <tr>
+                    <th rowspan="2" scope="col">Tiket PP</th>
+                    <th scope="col">Uang Harian </th>
+                    <th scope="col">Penginapan </th>
+                    <th scope="col">Translok Jakarta</th>
+                    <th scope="col" style="max-width: 70px;" >Translok Tempat Tujuan </th>
+                    <th scope="col">Biaya Lainnya </th>
+                    <th scope="col" style="max-width: 70px;">Uang Representatif</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody class="align-middle text-center">
+                <tr>
+                    <th scope="col">1</th>
+                    <th scope="col"><input type="text" name="nama" form="formSPJ" /></th>
+                    <th scope="col"><input type="text" name="nip" form="formSPJ" /></th>
+                    <th scope="col"><input type="text" name="tanggalJalan" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col">s.d.</th>
+                    <th scope="col"><input type="text" name="tanggalPulang" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"><input type="text" name="lamaPerjalanan" form="formSPJ" style="max-width: 30px;" /></th>
+                    <th scope="col"><input type="text" name="tiketPP" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"><input type="text" name="uangHarian" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"><input type="text" name="penginapan" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"><input type="text" name="translokJakarta" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"><input type="text" name="translokTempatTujuan" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"><input type="text" name="biayaLainnya" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"><input type="text" name="uangRepresentatif" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"><input type="text" name="total" form="formSPJ" style="max-width: 70px;" /></th>
+                    <th scope="col"></tr>
+                </tr>
+                <tr>
+                    <th scope="col" colspan="7">Jumlah</th>
+                    <th scope="col">280.000</th>
+                    <th scope="col">1.720.000</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">2.000.000</th>
+                    <th scope="col"> </th>
+                </tr>
+            </tbody>
+          </table>
+          <table class="non-table" style="width: 40%;border: none; margin-top: 1em;">
+            <tr>
+                <th>Surat Tugas (Tanggal/Nomor) </th>
+                <th>:</th>
+                <th>RT.01/01.1/1837/2022</th>
+                <th>Tanggal: 12/12/2023</th>
+            </tr>
+            <tr>
+                <th>Beban pada DIPA PPATK </th>
+                <th>:</th>
+                <th colspan="2">DIPA-078.01.1.453374/2022 Tgl. 17 November 2021</th>
+            </tr>
+            <tr>
+                <th>Kode AKUN </th>
+                <th>:</th>
+                <th colspan="2">078.01.3384.BCE.002.052.B.524111</th>
+            </tr>
+          </table>
+
+          <div class="row mt-5" >
+            <div class="col">
+                <table class="text-center">
+                    <tr><th>Bendahara Pengeluaran</th></tr>
+                    <tr><th style="height: 50px;"></th></tr>
+                    <tr><th>Edsel Fikriwafii Hidayat</th></tr>
+                    <tr><th>199806242020011001</th></tr>
+                </table>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+                <table class="text-center">
+                    <tr><th>Pejabat Pembuat Komitmen</th></tr>
+                    <tr><th style="height: 50px;"></th></tr>
+                    <tr><th>Nurul Hidayati Sukriyono</th></tr>
+                    <tr><th>199806242020011001</th></tr>
+                </table>
+            </div>
+          </div>
+    </div>
+</body>
+</html>

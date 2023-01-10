@@ -19,8 +19,11 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
     "flash": "^1.1.0",
+    "handlebars": "^4.7.7",
+    "html-pdf": "^3.0.1",
     "method-override": "^3.0.0",
     "mongoose": "^6.4.4",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "puppeteer": "^19.4.1"
   }
 }
