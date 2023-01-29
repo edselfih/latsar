@@ -73,7 +73,7 @@ app.use('/input', inputRoutes);
 app.use('/monitoring', monitoringRoutes)
 app.use('/spj', spjRoutes);
 
-app.listen(443, () => {
+app.listen(3000, () => {
     console.log('server aktif')
 })
 
