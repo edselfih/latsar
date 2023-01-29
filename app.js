@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
 app.engine('ejs' , ejsMate);
 
 
@@ -72,7 +73,7 @@ app.use('/input', inputRoutes);
 app.use('/monitoring', monitoringRoutes)
 app.use('/spj', spjRoutes);
 
-app.listen(3000, () => {
+app.listen(443, () => {
     console.log('server aktif')
 })
 

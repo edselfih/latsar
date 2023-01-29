@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const daftarSPJSchema = new Schema ({
+const daftarSpjSchema = new Schema ({
     nama: String,
     nip: String,
     tanggalJalan: String,
@@ -17,4 +17,4 @@ const daftarSPJSchema = new Schema ({
     total: String
 })
 
-module.exports = mongoose.model('DaftarSPJ', daftarSPJSchema)
+module.exports = mongoose.model('DaftarSpj', daftarSpjSchema)

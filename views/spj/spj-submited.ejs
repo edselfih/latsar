@@ -10,10 +10,6 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link
-      rel="icon"
-      href="https://res.cloudinary.com/dmpw6rs6b/image/upload/v1648210576/001-tyrout/laptop_zhbon1.png"
-    />
     <style>
         table {
         border-collapse: collapse;
@@ -31,7 +27,7 @@
     </style>
     <script>
         window.onload = function(){
-            setInterval(document.forms['formSPJ'].submit(), 2000)
+            setInterval(document.forms['formSPJ'].submit(), 5000)
             
         }
     </script>
@@ -77,20 +73,20 @@
                 <tbody class="align-middle text-center">
                     <tr>
                         <th scope="col">1</th>
-                        <th scope="col"><%= spj.name %></th>
-                        <th scope="col"><input type="text" name="nip" form="formSPJ" /></th>
-                        <th scope="col"><input type="text" name="tanggalJalan" form="formSPJ" style="max-width: 60px;" /></th>
+                        <th scope="col"><%= spj.nama %></th>
+                        <th scope="col"><%= spj.nip %> </th>
+                        <th scope="col"><%= spj.tanggalJalan %></th>
                         <th scope="col">s.d.</th>
-                        <th scope="col"><input type="text" name="tanggalPulang" form="formSPJ" style="max-width: 60px;" /></th>
-                        <th scope="col"><input type="text" name="lamaPerjalanan" form="formSPJ" style="max-width: 30px;" /></th>
-                        <th scope="col"><input type="text" name="tiketPP" form="formSPJ" style="max-width: 60px;" /></th>
-                        <th scope="col"><input type="text" name="uangHarian" form="formSPJ" style="max-width: 60px;" /></th>
-                        <th scope="col"><input type="text" name="penginapan" form="formSPJ" style="max-width: 60px;" /></th>
-                        <th scope="col"><input type="text" name="translokJakarta" form="formSPJ" style="max-width: 60px;" /></th>
-                        <th scope="col"><input type="text" name="translokTempatTujuan" form="formSPJ" style="max-width: 60px;" /></th>
-                        <th scope="col"><input type="text" name="biayaLainnya" form="formSPJ" style="max-width: 60px;" /></th>
-                        <th scope="col"><input type="text" name="uangRepresentatif" form="formSPJ" style="max-width: 60px;" /></th>
-                        <th scope="col"><input type="text" name="total" form="formSPJ" style="max-width: 60px;" /></th>
+                        <th scope="col"><%= spj.tanggalPulang %> </th>
+                        <th scope="col"><%= spj.lamaPerjalanan %> </th>
+                        <th scope="col"><%= spj.tiketPP %> </th>
+                        <th scope="col"><%= spj.uangHarian %> </th>
+                        <th scope="col"><%= spj.penginapan%></th>
+                        <th scope="col"><%= spj.translokJakarta %> </th>
+                        <th scope="col"><%= spj.translokTempatTujuan %> </th>
+                        <th scope="col"><%= spj.biayaLainnya %> </th>
+                        <th scope="col"><%= spj.biayaLainnya %> </th>
+                        <th scope="col"><%= spj.total %> </th>
                         <th scope="col"></tr>
                     </tr>
                     <tr>

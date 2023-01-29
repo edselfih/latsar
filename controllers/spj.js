@@ -1,47 +1,59 @@
-const fs = require('fs')
-const path = require('path')
-const utils = require('util')
-const puppeteer = require('puppeteer')
-const hb = require('handlebars')
-const readFile = utils.promisify(fs.readFile)
-const DaftarSPJ = require("../models/daftar-spj");
-let ejs = require("ejs");
-let pdf = require("html-pdf");
-
+const DaftarSpj = require("../models/daftar-spj");
+const hbs = require('handlebars');
+const fs = require('fs-extra');
+const path = require('path');
+const puppeteer = require('puppeteer');
 
 module.exports.index = (req, res) => {
-    res.render('./spj/spj.ejs')
+    res.render('./spj/honor-narsum.ejs')
 }
 
 module.exports.createSPJ = async (req, res) => {
-    const spj = new DaftarSPJ(req.body);
-    await spj.save();
-    ejs.renderFile(path.join(__dirname, '../views/spj/', "spj-submited.ejs"), {spj : req.body },
-    (err, data) => {
-    if (err) {
-        res.send(err.message);
-    } else {
-        let options = {
-            "height": "11.25in",
-            "width": "8.5in",
-            "header": {
-                "height": "20mm",
-            },
-            "footer": {
-                "height": "20mm",
-            },
-
-        };
-        pdf.create(spj, options).toFile("./download/spj.pdf", function (err, data) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send("File created successfully");
-            }
-        });
+    const newSpj = new DaftarSpj(req.body);
+    await newSpj.save();
+    const spj = {
+        nama : newSpj.nama,
+        nip : newSpj.nip,
+        tanggalJalan : newSpj.tanggalJalan,
+        tanggalPulang : newSpj.tanggalPulang,
+        lamaPerjalanan : newSpj.lamaPerjalanan,
+        tiketPP : newSpj.tiketPP,
+        uangHarian : newSpj.uangHarian,
+        penginapan : newSpj.penginapan,
+        translokJakarta : newSpj.translokJakarta,
+        translokTempatTujuan : newSpj.translokTempatTujuan,
+        biayaLainnya : newSpj.biayaLainnya,
+        uangRepresentatif : newSpj.uangRepresentatif,
+        total : newSpj.uangRepresentatif
     }
-});
+    const compile = async function (templateName, spj) {
+        const filePath = path.join(process.cwd(),'./views/spj/',`${templateName}.hbs`)
+        const html = await fs.readFile(filePath,'utf8')
+        return hbs.compile(html)(spj)
+    }
+    try{
+        const browser = await puppeteer.launch()
+        const page = await browser.newPage()
+        await page.goto('http://localhost:3000/spj')
+        // const content = await compile('honor-narsum', spj)
+        const content = '<h1>heyyy</h1>'
+        await page.setContent(content, { waitUntil: "networkidle0" })
+        await page.pdf({
+            printBackground: true,
+            headerTemplate: '<span style="font-size: 30px; width: 200px; height: 200px; background-color: black; color: white; margin: 20px;">Header 1</span>',
+            footerTemplate: '<span style="font-size: 30px; width: 50px; height: 50px; background-color: red; color:black; margin: 20px;">Footer</span>',
+            displayHeaderFooter: true,
+            landscape: true,
+            path:'output.pdf',
+            format:'A4'
+        });
+        console.log("done creating pdf")
+    } catch(e){
+        console.log(e) 
+    }
+    res.render('./spj/spj-submited', {spj})
 }
 
 module.exports.downloadSPJ = (req, res) => {
+    res.download('./docs/spj.pdf')
 };

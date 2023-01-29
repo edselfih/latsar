@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+    table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .main-table th,
+  .main-table td {
+    padding: 2px 4px;
+    border: 1px solid rgb(0, 0, 0);
+  }
+  th, td {
+    background: rgb(255, 255, 255);
+    font-size: xx-small;
+  }
+</style>
+<body>
+    <form action="/spj" method="POST" id="formSPJ">
+        
+    </form>
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="container">
+                <div class="text-center mb-3">
+                    <p class="m-0 d-flex justify-content-center">DAFTAR PEMBAYARAN HONOR/JASA PROFESI</p>
+                    <p class="m-0 d-flex justify-content-center"><input class="form-control form-control-sm" type="text" name="nama" form="formHonor" style="width: 30em;" placeholder="Judul" /></p>
+                    <p class="m-0 d-flex justify-content-center"><input type="text" class="form-control form-control-sm" name="nama" form="formHonor" style="width: 30em;" placeholder="Tanggal Honor" /></p>
+                    <p class="m-0 d-flex justify-content-center"><input type="text" class="form-control form-control-sm" name="nama" form="formHonor" style="width: 30em;" placeholder="Beban MAK" /></p>
+                    <p class="m-0 d-flex justify-content-center"><input type="text" class="form-control form-control-sm" name="nama" form="formHonor" style="width: 30em;" placeholder="DIPA" /></p>
+                </div>
+            </div>
+            <div class="m-3">
+                <table class="main-table">
+                    <thead class="align-middle text-center">
+                        <tr>
+                            <th class="pb-2 pt-2">No</th>
+                            <th class="pb-2 pt-2">Nama</th>
+                            <th class="pb-2 pt-2">Jabatan/Instansi</th>
+                            <th class="pb-2 pt-2">Honor Per Jam (Rp)</th>
+                            <th class="pb-2 pt-2">Jumlah Jam/Keg</th>
+                            <th class="pb-2 pt-2">Jumlah Honor Kotor</th>
+                            <th class="pb-2 pt-2">Jumlah PPh (Rp)</th>
+                            <th class="pb-2 pt-2">Jumlah Honor Bersih</th>
+                            <th class="pb-2 pt-2">Nomor Rekening</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="align-middle text-center">
+                            <td class="pb-2 pt-2">1</td>
+                            <td class="pb-2 pt-2"><input type="text" name="nama" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jabatan" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="honor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlJam" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlHonor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlPajak" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlBersih" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="nomorRekening" form="formHonor" /></td>
+                        </tr>
+                        <tr class="align-middle text-start">
+                            <td></td>
+                            <td scope="col" colspan="8">
+                                <p class="m-0">Dasar: </p>
+                                <p class="m-0">NPWP: </p>
+                            </td>
+                        </tr>
+                        <tr class="align-middle text-center">
+                            <td class="pb-2 pt-2">1</td>
+                            <td class="pb-2 pt-2"><input type="text" name="nama" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jabatan" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="honor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlJam" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlHonor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlPajak" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlBersih" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="nomorRekening" form="formHonor" /></td>
+                        </tr>
+                        <tr class="align-middle text-start">
+                            <td></td>
+                            <td scope="col" colspan="8">
+                                <p class="m-0">Dasar: </p>
+                                <p class="m-0">NPWP: </p>
+                            </td>
+                        </tr>
+                        <tr class="align-middle text-center">
+                            <td class="pb-2 pt-2">1</td>
+                            <td class="pb-2 pt-2"><input type="text" name="nama" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jabatan" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="honor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlJam" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlHonor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlPajak" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlBersih" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="nomorRekening" form="formHonor" /></td>
+                        </tr>
+                        <tr class="align-middle text-start">
+                            <td></td>
+                            <td scope="col" colspan="8">
+                                <p class="m-0">Dasar: </p>
+                                <p class="m-0">NPWP: </p>
+                            </td>
+                        </tr>
+                        <tr class="align-middle text-center">
+                            <td class="pb-2 pt-2">1</td>
+                            <td class="pb-2 pt-2"><input type="text" name="nama" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jabatan" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="honor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlJam" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlHonor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlPajak" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlBersih" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="nomorRekening" form="formHonor" /></td>
+                        </tr>
+                        <tr class="align-middle text-start">
+                            <td></td>
+                            <td scope="col" colspan="8">
+                                <p class="m-0">Dasar: </p>
+                                <p class="m-0">NPWP: </p>
+                            </td>
+                        </tr>
+                        <tr class="align-middle text-center">
+                            <td class="pb-2 pt-2">1</td>
+                            <td class="pb-2 pt-2"><input type="text" name="nama" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jabatan" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="honor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlJam" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlHonor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlPajak" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlBersih" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="nomorRekening" form="formHonor" /></td>
+                        </tr>
+                        <tr class="align-middle text-start">
+                            <td></td>
+                            <td scope="col" colspan="8">
+                                <p class="m-0">Dasar: </p>
+                                <p class="m-0">NPWP: </p>
+                            </td>
+                        </tr>
+                        <tr class="align-middle text-center">
+                            <td class="pb-2 pt-2">1</td>
+                            <td class="pb-2 pt-2"><input type="text" name="nama" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jabatan" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="honor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlJam" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlHonor" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlPajak" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="jmlBersih" form="formHonor" /></td>
+                            <td class="pb-2 pt-2"><input type="text" name="nomorRekening" form="formHonor" /></td>
+                        </tr>
+                        <tr class="align-middle text-start">
+                            <td></td>
+                            <td scope="col" colspan="8">
+                                <p class="m-0">Dasar: </p>
+                                <p class="m-0">NPWP: </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+        
+                  <div class="row mt-10" >
+                    <div class="col">
+                        <table class="text-center">
+                            <tr><th>Bendahara Pengeluaran</th></tr>
+                            <tr><th style="height: 50px;"></th></tr>
+                            <tr><th>Edsel Fikriwafii Hidayat</th></tr>
+                            <tr><th>199806242020011001</th></tr>
+                        </table>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <table class="text-center">
+                            <tr><th>Pejabat Pembuat Komitmen</th></tr>
+                            <tr><th style="height: 50px;"></th></tr>
+                            <tr><th><input type="text" name="nama" form="formHonor" placeholder="Nama Pejabat Pembuat Komitmen" style="width: 20rem;" /></th></tr>
+                            <tr><th>199806242020011001</th></tr>
+                        </table>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+        <button class="btn btn-warning mb-3"  form="formSPJ">submit</button>
+    </div>
+
+</body>
+</html>
