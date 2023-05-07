@@ -62,12 +62,13 @@ module.exports.indexFilter = async (req, res) => {
   res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter, session});
 };
 module.exports.indexSearch= async (req, res) => {
+  const session = req.session
   const filter = req.query.filter
   const nomorSpby = req.body.valueFilter.nomorSpby
   const inputedGups = await InputGup.find({nomorSpby}).populate("checked");
   const daftarPpk = await DaftarPpk.find({})
   checked = inputedGups.checked
-  res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter});
+  res.render("./monitoring/index", { inputedGups, checked, daftarPpk , filter, session});
 };
 
 module.exports.detailSpby = async (req, res) => {
